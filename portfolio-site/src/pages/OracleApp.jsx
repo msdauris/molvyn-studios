@@ -114,10 +114,19 @@ const OracleApp = () => {
             focus on your question or intention. click the deck to draw one or multiple cards 
             for your reading. click any drawn card to explore its deeper meaning and symbolism.
           </p>
-          <div className="content-meta" style={{ marginTop: '2rem' }}>
-            33 mystical cards<br/>
-            mindful interactions<br/>
-            built with intention
+        </div>
+      </section>
+
+      {/* About the Oracle */}
+      <section className="content-section">
+        <div className="content-left">
+          <h2 className="content-title">about</h2>
+        </div>
+        <div className="content-right">
+          <div className="content-meta">
+            <p>33 unique cards</p>
+            <p>mindful interactions</p>
+            <p>built with intention</p>
           </div>
         </div>
       </section>

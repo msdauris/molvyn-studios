@@ -200,9 +200,9 @@ const Card = ({ card, isExpanded = false, onClose, onCardClick, isRevealed = tru
         {/* Card Front */}
         {isRevealed && (
           <div className="text-center p-2">
-            <div className="text-lg font-serif font-bold mb-1">{card.number}</div>
-            <div className="text-xs font-medium leading-tight">{card.name}</div>
-            <div className="text-xs opacity-80 mt-1">{card.element}</div>
+            <div style={{ fontSize: '1.125rem', fontWeight: '900', marginBottom: '0.25rem' }}>{card.number}</div>
+            <div style={{ fontSize: '0.75rem', fontWeight: '600', lineHeight: '1.2' }}>{card.name}</div>
+            <div style={{ fontSize: '0.75rem', opacity: 0.8, marginTop: '0.25rem' }}>{card.element}</div>
           </div>
         )}
 
