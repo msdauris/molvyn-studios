@@ -69,237 +69,273 @@ The site has good content and clean design, but lacks visual impact. It looks li
 
 .floating-element {
     position: absolute;
-    opacity: 0.08;
-    pointer-events: none;
+    background: rgba(0, 102, 255, 0.03);
+    border-radius: 0;
+    z-index: -1;
+}
+```
+
+### Architectural Elements
+```css
+/* Geometric shapes and floating elements */
+.geometric-accent {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: linear-gradient(45deg, #0066ff08, transparent);
+    transform: rotate(45deg);
+    z-index: -1;
+}
+
+.text-underline-accent {
+    position: relative;
+}
+
+.text-underline-accent::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 60%;
+    height: 3px;
+    background: linear-gradient(90deg, #0066ff, #ff6b00);
+    opacity: 0.7;
 }
 ```
 
 ## Page-Specific Transformations
 
-### 1. Work/Portfolio Page (/work)
-**Current:** Basic grid of project cards
-**Transform to:**
-- **Hero:** Massive "recent work" typography treatment
-- **Project showcase:** Asymmetrical grid with dramatic project titles
-- **Floating elements:** Geometric shapes that complement project layouts
+### Homepage Hero
+**Current:** Basic centered text with buttons
+**Transform to:** Dramatic asymmetrical layout with floating elements
 
-```html
-<!-- Hero Section -->
-<section class="hero-section">
-    <div class="floating-element floating-line"></div>
-    <div class="floating-element floating-circle"></div>
+```jsx
+// New Hero Structure
+<section className="hero-section relative overflow-hidden">
+  {/* Floating geometric elements */}
+  <div className="geometric-accent top-20 right-20"></div>
+  <div className="geometric-accent bottom-40 left-10 opacity-50"></div>
+  
+  <div className="content-grid">
+    <div className="space-y-8">
+      <h1 className="hero-title text-underline-accent">
+        molvyn<br/>studios
+      </h1>
+      <p className="large-text">
+        digital tools built<br/>with intention
+      </p>
+      <div className="flex flex-col gap-4 max-w-xs">
+        <button className="btn-architectural-primary">view recent work</button>
+        <button className="btn-architectural-secondary">start a project</button>
+      </div>
+    </div>
     
-    <div class="hero-content">
-        <h1 class="hero-title">selected<br>work</h1>
-        <p class="large-text">tools that bridge intention and interaction</p>
+    <div className="relative">
+      {/* Visual element - could be abstract shapes or project preview */}
+      <div className="floating-preview-grid">
+        {/* Mini project previews or abstract elements */}
+      </div>
     </div>
-</section>
-
-<!-- Projects Grid -->
-<section class="projects-showcase">
-    <div class="project-card featured">
-        <div class="project-meta">live</div>
-        <h2 class="project-title">threshold oracle</h2>
-        <p class="project-description">digital divination tool</p>
-        <a href="#" class="project-link">explore ↗</a>
-    </div>
-    <!-- Repeat for other projects -->
+  </div>
 </section>
 ```
 
-### 2. About Page (/about)
-**Current:** Good content, basic layout
-**Transform to:**
-- **Hero:** "about the work" in massive typography
-- **Two-column asymmetrical layout** with sticky left column
-- **Capabilities grid** with hover effects
+### Projects Section
+**Current:** Standard grid layout
+**Transform to:** Asymmetrical masonry with dramatic typography
 
-```html
-<!-- Hero Section -->
-<section class="hero-section">
-    <div class="floating-element floating-grid"></div>
-    
-    <div class="hero-content">
-        <h1 class="hero-title">about the<br>work</h1>
+```jsx
+// New Projects Structure
+<section className="py-32 relative">
+  <div className="max-w-7xl mx-auto px-8">
+    <div className="grid grid-cols-12 gap-8">
+      <div className="col-span-4">
+        <h2 className="section-title sticky top-32">
+          recent<br/>work
+        </h2>
+      </div>
+      
+      <div className="col-span-8 space-y-16">
+        {projects.map((project, index) => (
+          <div className={`project-card ${index % 2 === 0 ? 'ml-16' : 'mr-16'}`}>
+            <div className="aspect-video bg-cool-gray mb-6 relative overflow-hidden">
+              {/* Project preview with subtle hover animation */}
+            </div>
+            <h3 className="text-2xl font-bold mb-2">{project.title}</h3>
+            <p className="body-text mb-4">{project.description}</p>
+            <div className="flex items-center gap-4">
+              <span className="mono-text text-sm text-medium-gray">{project.status}</span>
+              <div className="flex-1 h-px bg-gray-200"></div>
+              <button className="text-electric-blue hover:text-true-black transition-colors">
+                explore →
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
-</section>
-
-<!-- Content Grid -->
-<section class="content-grid">
-    <div class="content-left sticky">
-        <h2 class="section-subtitle">approach</h2>
-    </div>
-    <div class="content-right">
-        <p class="body-text">each project starts with understanding the human need behind the technology...</p>
-    </div>
-</section>
-
-<!-- Capabilities Grid -->
-<section class="capabilities-grid">
-    <div class="capability-card">
-        <h3>web development</h3>
-        <p>react, javascript, modern css</p>
-    </div>
-    <!-- Repeat for other capabilities -->
+  </div>
 </section>
 ```
 
-### 3. Contact Page (/contact)
-**Current:** Basic form
-**Transform to:**
-- **Hero:** "let's build something" with dramatic scale
-- **Split layout:** Form on left, process info on right
-- **Enhanced form styling** with architectural details
+### About Section
+**Current:** Standard centered content
+**Transform to:** Split layout with visual hierarchy
 
-```html
-<!-- Hero Section -->
-<section class="hero-section">
-    <div class="floating-element floating-arrow"></div>
+```jsx
+// New About Structure
+<section className="py-32 bg-cool-gray relative">
+  <div className="content-grid">
+    <div>
+      <h2 className="section-title mb-8">
+        about<br/>molvyn studios
+      </h2>
+      <div className="space-y-6 body-text">
+        <p>currently building tools that bridge the technical and mystical</p>
+        <p>crafted independently with ai partnership</p>
+        <p>available for select projects</p>
+      </div>
+    </div>
     
-    <div class="hero-content">
-        <h1 class="hero-title">let's build<br>something</h1>
-        <p class="large-text">interested in working together?</p>
-    </div>
-</section>
-
-<!-- Contact Content -->
-<section class="contact-content">
-    <div class="contact-form">
-        <!-- Enhanced form styling -->
-    </div>
-    <div class="contact-info">
-        <div class="info-section">
-            <h3>process</h3>
-            <ul>
-                <li>initial conversation to understand scope</li>
-                <li>proposal with timeline and approach</li>
-                <li>iterative development with regular check-ins</li>
-                <li>delivery and handoff</li>
-            </ul>
+    <div className="space-y-12">
+      <div>
+        <h3 className="text-xl font-semibold mb-4">approach</h3>
+        <p className="body-text">confident minimalist, architectural precision</p>
+      </div>
+      <div>
+        <h3 className="text-xl font-semibold mb-4">ethos</h3>
+        <p className="body-text">digital soul, human intention, ai partnership</p>
+      </div>
+      <div>
+        <h3 className="text-xl font-semibold mb-4">availability</h3>
+        <div className="flex items-center gap-3">
+          <div className="w-3 h-3 bg-electric-blue rounded-full"></div>
+          <span className="body-text">accepting new projects</span>
         </div>
+      </div>
     </div>
+  </div>
 </section>
 ```
 
-### 4. Individual Project Pages (Oracle, Chatterbox, Relationship)
-**Transform to:**
-- **Hero:** Project name in massive typography
-- **Interactive preview** section
-- **Technical details** in monospace sidebar
-- **Process documentation** with visual hierarchy
+## Enhanced CSS System
 
-## Interactive Enhancements
-
-### Micro-Animations
+### New Button Styles
 ```css
-/* Button hover effects */
-.btn-primary {
+.btn-architectural-primary {
+    background: #000000;
+    color: #ffffff;
+    padding: 16px 32px;
+    border: none;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: lowercase;
     position: relative;
     overflow: hidden;
     transition: all 0.3s ease;
 }
 
-.btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-}
-
-.btn-primary::before {
+.btn-architectural-primary::before {
     content: '';
     position: absolute;
     top: 0;
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
     transition: left 0.5s ease;
 }
 
-.btn-primary:hover::before {
+.btn-architectural-primary:hover::before {
     left: 100%;
 }
 
-/* Card hover effects */
-.project-card:hover {
-    transform: translateY(-4px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+.btn-architectural-secondary {
+    background: transparent;
+    color: #000000;
+    border: 2px solid #000000;
+    padding: 14px 30px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: lowercase;
+    transition: all 0.3s ease;
 }
-```
 
-### Floating Architectural Elements
-```css
-/* Add these to each page for architectural details */
-.floating-line {
-    width: 200px;
-    height: 2px;
+.btn-architectural-secondary:hover {
     background: #000000;
-    transform: rotate(45deg);
-    top: 20%;
-    left: 10%;
-}
-
-.floating-circle {
-    width: 100px;
-    height: 100px;
-    border: 1px solid #000000;
-    border-radius: 50%;
-    bottom: 30%;
-    right: 15%;
-}
-
-.floating-grid {
-    width: 150px;
-    height: 150px;
-    background: linear-gradient(90deg, #000000 1px, transparent 1px),
-                linear-gradient(180deg, #000000 1px, transparent 1px);
-    background-size: 20px 20px;
-    top: 40%;
-    right: 10%;
+    color: #ffffff;
+    transform: translateY(-2px);
 }
 ```
 
-## Implementation Checklist
+### Enhanced Micro-interactions
+```css
+.project-card {
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
 
-### Phase 1: Global Updates
-✅ **Typography system** - Implement dramatic font scales across all pages  
-✅ **Navigation consistency** - Fixed positioning, clean hover states  
-✅ **Color system** - Ensure consistent use of black/white/gray palette  
-✅ **Base layouts** - Hero sections, content grids, floating elements  
+.project-card:hover {
+    transform: translateY(-8px);
+}
 
-### Phase 2: Page-Specific Heroes
-✅ **Work page** - "selected work" massive typography  
-✅ **About page** - "about the work" with floating grid  
-✅ **Contact page** - "let's build something" with enhanced form  
-✅ **Project pages** - Individual project name treatments  
+.project-card:hover .aspect-video {
+    transform: scale(1.02);
+}
 
-### Phase 3: Interactive Polish
-✅ **Button animations** - Hover effects with shimmer/lift  
-✅ **Card interactions** - Subtle scale and shadow on hover  
-✅ **Scroll indicators** - Bouncing elements where appropriate  
-✅ **Loading states** - Smooth transitions between pages  
+.nav-link {
+    position: relative;
+    transition: all 0.3s ease;
+}
 
-### Phase 4: Architectural Details
-✅ **Floating elements** - Geometric shapes on each page  
-✅ **Asymmetrical grids** - Break away from centered layouts  
-✅ **Strategic gradients** - Subtle background treatments  
-✅ **Monospace metadata** - Technical authenticity in details  
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #0066ff;
+    transition: width 0.3s ease;
+}
 
-## Quality Standards
+.nav-link:hover::after {
+    width: 100%;
+}
+```
 
-### Visual Impact Test:
-- **5-second rule:** Visitor should immediately think "this looks crafted"
-- **Scroll engagement:** Each section should feel visually distinct and interesting
-- **Mobile experience:** Typography should scale beautifully on all devices
-- **Performance:** All animations should be smooth, no jank
+## Implementation Priority
 
-### Brand Consistency:
-- **Voice:** All copy maintains lowercase, confident tone
-- **Hierarchy:** Clear information architecture across all pages  
-- **Navigation:** Seamless flow between sections
-- **Technical quality:** Site demonstrates your development skills through execution
+### Phase 1: Typography & Layout Foundation
+1. Update CSS with new typography scales
+2. Implement hero section transformation
+3. Add geometric accent elements
 
-## Final Outcome Goal
+### Phase 2: Enhanced Interactions
+1. Implement new button styles with animations
+2. Add project card hover effects
+3. Enhanced navigation micro-interactions
 
-Transform the site from "clean but forgettable" to "holy shit, who built this?" The aesthetic should whisper expertise rather than shout for attention. Every page should reinforce that this is someone who builds with both technical skill and design sensibility.
+### Phase 3: Visual Polish
+1. Add floating elements and geometric shapes
+2. Implement asymmetrical layouts
+3. Fine-tune spacing and visual hierarchy
 
-Users should leave thinking: "This person clearly knows what they're doing and has impeccable taste."
+### Phase 4: Performance & Polish
+1. Optimize animations for performance
+2. Ensure mobile responsiveness
+3. Test and refine micro-interactions
+
+## Success Metrics
+- **Visual Impact:** Site should feel dramatically different from current state
+- **Brand Consistency:** Maintain molvyn studios voice and messaging
+- **Functionality:** All existing features continue to work perfectly
+- **Performance:** No degradation in load times or responsiveness
+- **Mobile Experience:** Enhanced mobile design that feels intentional
+
+## References for Inspiration
+- **Tore Bentsen:** Bold typography, generous whitespace
+- **Mammut Local Adventure:** Strategic color usage, clean navigation
+- **Nakashima Woodworkers:** Craft-focused messaging, timeless aesthetic
+
+The goal is to transform the site from "clean but forgettable" to "architecturally striking while maintaining usability." Every element should feel intentionally placed and contribute to the overall visual narrative of confident, minimal craftsmanship.
