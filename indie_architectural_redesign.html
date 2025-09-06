@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Molvyn Studios - Architectural Redesign Preview</title>
+    <style>
+        /* Import Inter font */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600&display=swap');
+        
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: #ffffff;
+            color: #000000;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Typography System */
+        .hero-title {
+            font-size: clamp(3rem, 12vw, 12rem);
+            font-weight: 900;
+            letter-spacing: -0.05em;
+            line-height: 0.85;
+            margin-bottom: 2rem;
+        }
+        
+        .section-title {
+            font-size: clamp(2rem, 6vw, 4rem);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 0.9;
+        }
+        
+        .large-text {
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            font-weight: 300;
+            line-height: 1.4;
+        }
+        
+        .body-text {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #666666;
+        }
+        
+        .mono-text {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            color: #666666;
+        }
+        
+        /* Layout Components */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
+            overflow: hidden;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+        
+        /* Geometric Elements */
+        .geometric-accent {
+            position: absolute;
+            background: rgba(0, 102, 255, 0.03);
+            border-radius: 0;
+            z-index: -1;
+        }
+        
+        .geometric-1 {
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            right: 10%;
+            transform: rotate(45deg);
+        }
+        
+        .geometric-2 {
+            width: 200px;
+            height: 200px;
+            bottom: 20%;
+            left: 5%;
+            opacity: 0.5;
+            transform: rotate(15deg);
+        }
+        
+        .geometric-3 {
+            width: 150px;
+            height: 150px;
+            top: 60%;
+            right: 30%;
+            opacity: 0.3;
+            transform: rotate(-30deg);
+        }
+        
+        /* Text Accent */
+        .text-underline-accent {
+            position: relative;
+        }
+        
+        .text-underline-accent::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60%;
+            height: 4px;
+            background: linear-gradient(90deg, #0066ff, #ff6b00);
+            opacity: 0.7;
+        }
+        
+        /* Enhanced Buttons */
+        .btn-architectural-primary {
+            background: #000000;
+            color: #ffffff;
+            padding: 16px 32px;
+            border: none;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: lowercase;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .btn-architectural-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .btn-architectural-primary:hover::before {
+            left: 100%;
+        }
+        
+        .btn-architectural-secondary {
+            background: transparent;
+            color: #000000;
+            border: 2px solid #000000;
+            padding: 14px 30px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: lowercase;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .btn-architectural-secondary:hover {
+            background: #000000;
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+        
+        /* Navigation */
+        .nav-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+        }
+        
+        .nav-logo {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #000000;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+        
+        .nav-link {
+            color: #666666;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #0066ff;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: #000000;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        /* Projects Section */
+        .projects-section {
+            padding: 8rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 8rem;
+        }
+        
+        .projects-title {
+            position: sticky;
+            top: 8rem;
+            height: fit-content;
+        }
+        
+        .projects-list {
+            display: flex;
+            flex-direction: column;
+            gap: 4rem;
+        }
+        
+        .project-card {
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-8px);
+        }
+        
+        .project-card:nth-child(even) {
+            margin-left: 4rem;
+        }
+        
+        .project-card:nth-child(odd) {
+            margin-right: 4rem;
+        }
+        
+        .project-preview {
+            aspect-ratio: 16/9;
+            background: #f8f8f8;
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+        
+        .project-card:hover .project-preview {
+            transform: scale(1.02);
+        }
+        
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .project-description {
+            color: #666666;
+            margin-bottom: 1rem;
+        }
+        
+        .project-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .project-status {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #666666;
+        }
+        
+        .project-divider {
+            flex: 1;
+            height: 1px;
+            background: #e0e0e0;
+        }
+        
+        .project-link {
+            color: #0066ff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .project-link:hover {
+            color: #000000;
+        }
+        
+        /* About Section */
+        .about-section {
+            background: #f8f8f8;
+            padding: 8rem 2rem;
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .about-details {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+        
+        .about-item h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            background: #0066ff;
+            border-radius: 50%;
+        }
+        
+        /* Floating Preview Grid */
+        .floating-preview-grid {
+            position: relative;
+            height: 400px;
+        }
+        
+        .preview-item {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .preview-1 {
+            width: 120px;
+            height: 80px;
+            top: 20%;
+            left: 10%;
+            transform: rotate(-5deg);
+        }
+        
+        .preview-2 {
+            width: 100px;
+            height: 100px;
+            top: 50%;
+            right: 20%;
+            transform: rotate(10deg);
+        }
+        
+        .preview-3 {
+            width: 80px;
+            height: 120px;
+            bottom: 20%;
+            left: 40%;
+            transform: rotate(-10deg);
+        }
+        
+        .preview-item:hover {
+            transform: scale(1.1) rotate(0deg);
+            background: rgba(0, 102, 255, 0.1);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .content-grid,
+            .projects-grid,
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .hero-title {
+                font-size: clamp(2rem, 8vw, 4rem);
+            }
+            
+            .section-title {
+                font-size: clamp(1.5rem, 6vw, 2.5rem);
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .project-card:nth-child(even),
+            .project-card:nth-child(odd) {
+                margin-left: 0;
+                margin-right: 0;
+            }
+            
+            .geometric-accent {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav-header">
+        <div class="nav-content">
+            <a href="#" class="nav-logo">molvyn studios</a>
+            <ul class="nav-links">
+                <li><a href="#work" class="nav-link">work</a></li>
+                <li><a href="#about" class="nav-link">about</a></li>
+                <li><a href="#contact" class="nav-link">contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <!-- Geometric Elements -->
+        <div class="geometric-accent geometric-1"></div>
+        <div class="geometric-accent geometric-2"></div>
+        <div class="geometric-accent geometric-3"></div>
+        
+        <div class="content-grid">
+            <div>
+                <h1 class="hero-title text-underline-accent">
+                    molvyn<br/>studios
+                </h1>
+                <p class="large-text" style="margin-bottom: 3rem;">
+                    digital tools built<br/>with intention
+                </p>
+                <div style="display: flex; flex-direction: column; gap: 1rem; max-width: 300px;">
+                    <button class="btn-architectural-primary">view recent work</button>
+                    <button class="btn-architectural-secondary">start a project</button>
+                </div>
+            </div>
+            
+            <div class="floating-preview-grid">
+                <div class="preview-item preview-1"></div>
+                <div class="preview-item preview-2"></div>
+                <div class="preview-item preview-3"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects-section" id="work">
+        <div class="projects-grid">
+            <div class="projects-title">
+                <h2 class="section-title">
+                    recent<br/>work
+                </h2>
+            </div>
+            
+            <div class="projects-list">
+                <div class="project-card">
+                    <div class="project-preview"></div>
+                    <h3 class="project-title">threshold oracle</h3>
+                    <p class="project-description">digital divination tool for daily reflection and insight</p>
+                    <div class="project-meta">
+                        <span class="project-status">live</span>
+                        <div class="project-divider"></div>
+                        <a href="#" class="project-link">explore →</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-preview"></div>
+                    <h3 class="project-title">digital chatterbox</h3>
+                    <p class="project-description">interactive fortune teller that unfolds wisdom with each click</p>
+                    <div class="project-meta">
+                        <span class="project-status">live</span>
+                        <div class="project-divider"></div>
+                        <a href="#" class="project-link">explore →</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-preview"></div>
+                    <h3 class="project-title">relationship deepener</h3>
+                    <p class="project-description">astrological compatibility questions for deeper connection</p>
+                    <div class="project-meta">
+                        <span class="project-status">development</span>
+                        <div class="project-divider"></div>
+                        <a href="#" class="project-link">explore →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="about-grid">
+            <div>
+                <h2 class="section-title" style="margin-bottom: 2rem;">
+                    about<br/>molvyn studios
+                </h2>
+                <div class="about-content">
+                    <p class="body-text">currently building tools that bridge the technical and mystical</p>
+                    <p class="body-text">crafted independently with ai partnership</p>
+                    <p class="body-text">available for select projects</p>
+                </div>
+            </div>
+            
+            <div class="about-details">
+                <div class="about-item">
+                    <h3>approach</h3>
+                    <p class="body-text">confident minimalist, architectural precision</p>
+                </div>
+                <div class="about-item">
+                    <h3>ethos</h3>
+                    <p class="body-text">digital soul, human intention, ai partnership</p>
+                </div>
+                <div class="about-item">
+                    <h3>availability</h3>
+                    <div class="status-indicator">
+                        <div class="status-dot"></div>
+                        <span class="body-text">accepting new projects</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.nav-header');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                nav.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+
+        // Add subtle parallax effect to geometric elements
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelectorAll('.geometric-accent');
+            
+            parallax.forEach((element, index) => {
+                const speed = 0.5 + (index * 0.1);
+                element.style.transform = `translateY(${scrolled * speed}px) rotate(${45 + (index * 15)}deg)`;
+            });
+        });
+    </script>
+</body>
+</html>
