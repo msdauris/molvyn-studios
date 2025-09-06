@@ -97,7 +97,7 @@ const OracleApp = () => {
           <div className="content-right">
             <Card 
               card={selectedCard} 
-              isExpanded={false}
+              isExpanded={true}
               onClose={() => setSelectedCard(null)}
             />
           </div>

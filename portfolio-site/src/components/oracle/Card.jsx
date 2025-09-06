@@ -64,9 +64,9 @@ const Card = ({ card, isExpanded = false, onClose, onCardClick, isRevealed = tru
               <div className="flex items-center gap-2 mt-1">
                 <span className="text-sm text-gray-600">{card.direction}</span>
                 <span className="text-gray-400">•</span>
-                <span className="text-sm text-gray-600">{card.element}</span>
+                <span className="text-lg font-semibold text-gray-800">{card.element}</span>
                 <span className="text-gray-400">•</span>
-                <span className="text-sm font-medium text-electric-blue">{card.number}</span>
+                <span className="text-xs font-medium text-electric-blue">{card.number}</span>
               </div>
             </div>
             <button
@@ -102,16 +102,31 @@ const Card = ({ card, isExpanded = false, onClose, onCardClick, isRevealed = tru
             {/* Keywords */}
             <div className="mb-6">
               <h3 className="text-lg font-semibold mb-3 text-gray-900">Keywords</h3>
-              <div className="flex flex-wrap gap-2">
-                {card.keywords.map((keyword) => (
-                  <span
-                    key={keyword}
-                    className="px-3 py-1 bg-electric-blue/10 text-electric-blue text-sm font-medium mono-text"
-                  >
-                    {keyword}
-                  </span>
-                ))}
-              </div>
+              {card.keywords && Array.isArray(card.keywords) && card.keywords.length > 0 ? (
+                <div className="flex flex-wrap gap-2">
+                  {card.keywords.map((keyword, index) => (
+                    <span
+                      key={`${keyword}-${index}`}
+                      style={{
+                        display: 'inline-block',
+                        padding: '8px 16px',
+                        backgroundColor: '#dbeafe',
+                        color: '#1e40af',
+                        fontSize: '14px',
+                        fontWeight: '500',
+                        borderRadius: '20px',
+                        border: '1px solid #93c5fd',
+                        marginRight: '8px',
+                        marginBottom: '8px'
+                      }}
+                    >
+                      {keyword}
+                    </span>
+                  ))}
+                </div>
+              ) : (
+                <p className="text-gray-500 italic">No keywords available for this card.</p>
+              )}
             </div>
 
             {/* Reversed Meaning */}

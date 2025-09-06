@@ -7,8 +7,8 @@ export const oracleCards = [
     number: "I",
     image: "/assets/cards/pebble.jpg",
     meaning: "Small weight carries ancient memory.",
-    //keywords: ["transformation", "courage", "new beginnings", "potential"],
-    //reversed: "Fear of change holds you back. The door remains closed until you choose to open it."
+    keywords: ["memory", "weight", "ancient", "foundation"],
+    reversed: "Heavy memories prevent forward movement."
   },
   {
     id: 2,
@@ -18,8 +18,8 @@ export const oracleCards = [
     number: "II",
     image: "/assets/cards/two-doves.jpg",
     meaning: "Partnership requires both freedom and return.",
-    //keywords: ["creation", "patience", "skill", "manifestation"],
-    //reversed: "Tangled threads require careful unraveling. Step back and see the larger pattern."
+    keywords: ["partnership", "freedom", "return", "balance"],
+    reversed: "Clipped wings cannot sustain true partnership."
   },
   {
     id: 3,
@@ -29,8 +29,8 @@ export const oracleCards = [
     number: "II",
     image: "/assets/cards/rustling-leaves.jpg",
     meaning: "The wind carries what you need to hear.",
-    //keywords: ["exploration", "freedom", "discovery", "intuition"],
-    //reversed: "Lost in circles, you've forgotten your destination. Pause and remember your true north."
+    keywords: ["messages", "wind", "listening", "nature"],
+    reversed: "Too much noise drowns whispered wisdom."
   },
   {
     id: 4,
@@ -40,8 +40,8 @@ export const oracleCards = [
     number: "III",
     image: "/assets/cards/merry-go-round.jpg",
     meaning: "What Joy circles back when you least expect it.",
-    //keywords: ["self-awareness", "projection", "truth", "clarity"],
-    //reversed: "Illusions cloud your vision. Look deeper than surface appearances."
+    keywords: ["joy", "cycles", "return", "surprise"],
+    reversed: "Endless circles become dizzy traps."
   },
   {
     id: 5,
@@ -51,8 +51,8 @@ export const oracleCards = [
     number: "III",
     image: "/assets/cards/spilled-tea.jpg",
     meaning: "Accidents pour West onto unexpected places.",
-    //keywords: ["rebirth", "renewal", "resilience", "transformation"],
-    //reversed: "Clinging to what must die prevents your resurrection. Release and rise."
+    keywords: ["accidents", "wisdom", "unexpected", "spillover"],
+    reversed: "Careful control prevents happy accidents."
   },
   // Add more cards to reach 33 total
   {
@@ -63,8 +63,8 @@ export const oracleCards = [
     number: "III",
     image: "/assets/cards/puddle.jpg",
     meaning: "Temporary mirrors reflect permanent truths.",
-    //keywords: ["West", "tradition", "guidance", "knowledge"],
-    //reversed: "Rigid thinking blocks new understanding. West requires flexibility."
+    keywords: ["reflection", "temporary", "truth", "mirror"],
+    reversed: "Surface reflections distort deeper realities."
   },
   {
     id: 7,
@@ -74,8 +74,8 @@ export const oracleCards = [
     number: "IV",
     image: "/assets/cards/rusted-key.jpg",
     meaning: "What once opened still remembers the way.",
-    //keywords: ["grace", "rhythm", "flow", "North"],
-    //reversed: "You've lost your rhythm. Return to the music of your soul."
+    keywords: ["access", "memory", "potential", "forgotten paths"],
+    reversed: "Clinging to old keys prevents finding new doors."
   },
   {
     id: 8,
@@ -85,8 +85,8 @@ export const oracleCards = [
     number: "IV",
     image: "/assets/cards/dandelion-book.jpg",
     meaning: "Time stops when beauty finds its page.",
-    //keywords: ["stability", "grounding", "security", "foundation"],
-    //reversed: "Rigidity masquerades as strength. True stability allows for movement."
+    keywords: ["preservation", "beauty", "time", "memory"],
+    reversed: "Pressed flowers lose their wild essence."
   },
   {
     id: 9,
@@ -96,8 +96,8 @@ export const oracleCards = [
     number: "IV",
     image: "/assets/cards/empty-chair.jpg",
     meaning: "Absence shapes the space around presence.",
-    //keywords: ["grace", "rhythm", "flow", "North"],
-    //reversed: "You've lost your rhythm. Return to the music of your soul."
+    keywords: ["absence", "space", "waiting", "potential"],
+    reversed: "Empty spaces echo with unspoken needs."
   },
   {
     id: 10,
@@ -107,8 +107,8 @@ export const oracleCards = [
     number: "VI",
     image: "/assets/cards/doll.jpg",
     meaning: "Forgotten play holds tomorrow's truth.",
-    //keywords: ["grace", "rhythm", "flow", "North"],
-    //reversed: "You've lost your rhythm. Return to the music of your soul."
+    keywords: ["play", "innocence", "forgotten wisdom", "childhood"],
+    reversed: "Abandoned dreams need gentle resurrection."
   },
   {
     id: 11,
@@ -118,8 +118,8 @@ export const oracleCards = [
     number: "VII",
     image: "/assets/cards/lighter.jpg",
     meaning: "Small sparks begin the greatest changes.",
-    //keywords: ["grace", "rhythm", "flow", "North"],
-    //reversed: "You've lost your rhythm. Return to the music of your soul."
+    keywords: ["spark", "ignition", "beginning", "potential"],
+    reversed: "Unused fire dies in closed containers."
   },
   {
     id: 12,
@@ -129,8 +129,8 @@ export const oracleCards = [
     number: "VII",
     image: "/assets/cards/helter-skelter.jpg",
     meaning: "Dizzy descents reveal new perspectives.",
-    //keywords: ["grace", "rhythm", "flow", "North"],
-    //reversed: "You've lost your rhythm. Return to the music of your soul."
+    keywords: ["descent", "perspective", "dizzy", "revelation"],
+    reversed: "Refusing the ride keeps vision narrow."
   },
   {
     id: 13,
@@ -140,8 +140,8 @@ export const oracleCards = [
     number: "VII",
     image: "/assets/cards/sunlight-prism.jpg",
     meaning: "Ordinary light holds rainbow secrets.",
-    //keywords: ["grace", "rhythm", "flow", "North"],
-    //reversed: "You've lost your rhythm. Return to the music of your soul."
+    keywords: ["light", "rainbow", "secrets", "ordinary"],
+    reversed: "Single colors miss the full spectrum."
   },
   {
     id: 14,
@@ -151,8 +151,8 @@ export const oracleCards = [
     number: "VIII",
     image: "/assets/cards/knotted-rope.jpg",
     meaning: "What binds you also holds you together.",
-    //keywords: ["grace", "rhythm", "flow", "North"],
-    //reversed: "You've lost your rhythm. Return to the music of your soul."
+    keywords: ["binding", "strength", "complexity", "support"],
+    reversed: "Knots become chains when tied too tight."
   },
   {
     id: 15,
@@ -162,8 +162,8 @@ export const oracleCards = [
     number: "IX",
     image: "/assets/cards/driftwood.jpg",
     meaning: "Rough journeys create smooth wisdom.",
-    //keywords: ["grace", "rhythm", "flow", "North"],
-    //reversed: "You've lost your rhythm. Return to the music of your soul."
+    keywords: ["journey", "transformation", "wisdom", "weathering"],
+    reversed: "Smoothness comes at the cost of substance."
   },
   {
     id: 16,
@@ -173,8 +173,8 @@ export const oracleCards = [
     number: "XI",
     image: "/assets/cards/reflection-moon.jpg",
     meaning: "Night truths shimmer on flowing surfaces.",
-    //keywords: ["grace", "rhythm", "flow", "North"],
-    //reversed: "You've lost your rhythm. Return to the music of your soul."
+    keywords: ["night", "truth", "shimmer", "flow"],
+    reversed: "Disturbed waters scatter moonlight's wisdom."
   },
   {
     id: 17,
@@ -184,8 +184,8 @@ export const oracleCards = [
     number: "XII",
     image: "/assets/cards/mushroom.jpg",
     meaning: "Hidden networks speak beneath your feet.",
-    //keywords: ["grace", "rhythm", "flow", "North"],
-    //reversed: "You've lost your rhythm. Return to the music of your soul."
+    keywords: ["connection", "hidden", "network", "underground"],
+    reversed: "Surface solutions miss deeper connections."
   },
   {
     id: 18,
@@ -195,8 +195,8 @@ export const oracleCards = [
     number: "XII",
     image: "/assets/cards/oar.jpg",
     meaning: "Direction comes from moving with the current.",
-    //keywords: ["grace", "rhythm", "flow", "North"],
-    //reversed: "You've lost your rhythm. Return to the music of your soul."
+    keywords: ["direction", "current", "movement", "guidance"],
+    reversed: "Fighting currents exhausts without progress."
   },
   {
     id: 19,
@@ -206,8 +206,8 @@ export const oracleCards = [
     number: "XIV",
     image: "/assets/cards/hot-air-balloon.jpg",
     meaning: "Rising requires releasing what weighs you down.",
-    //keywords: ["grace", "rhythm", "flow", "North"],
-    //reversed: "You've lost your rhythm. Return to the music of your soul."
+    keywords: ["release", "rising", "elevation", "letting go"],
+    reversed: "Holding onto baggage prevents ascension."
   },
   {
     id: 20,
@@ -217,8 +217,8 @@ export const oracleCards = [
     number: "XV",
     image: "/assets/cards/tiny-shell.jpg",
     meaning: "Ocean whispers fit in the palm of your hand.",
-    //keywords: ["grace", "rhythm", "flow", "North"],
-    //reversed: "You've lost your rhythm. Return to the music of your soul."
+    keywords: ["whispers", "ocean", "small", "intimate"],
+    reversed: "Vast messages require intimate listening."
   },
   {
     id: 21,
@@ -228,8 +228,8 @@ export const oracleCards = [
     number: "XVI",
     image: "/assets/cards/window-condensation.jpg",
     meaning: "Breath makes invisible boundaries visible.",
-    //keywords: ["grace", "rhythm", "flow", "North"],
-    //reversed: "You've lost your rhythm. Return to the music of your soul."
+    keywords: ["breath", "boundaries", "visible", "invisible"],
+    reversed: "Clear views miss the beauty of mist."
   },
   {
     id: 22,
@@ -239,8 +239,8 @@ export const oracleCards = [
     number: "XVII",
     image: "/assets/cards/candle-flicker.jpg",
     meaning: "Dancing flame reveals what steady light conceals.",
-    //keywords: ["grace", "rhythm", "flow", "North"],
-    //reversed: "You've lost your rhythm. Return to the music of your soul."
+    keywords: ["dance", "flame", "reveal", "movement"],
+    reversed: "Stillness sometimes shows what movement hides."
   },
   {
     id: 23,
@@ -250,8 +250,8 @@ export const oracleCards = [
     number: "XIX",
     image: "/assets/cards/birdsong.jpg",
     meaning: "Messages arrive in languages you almost remember.",
-    //keywords: ["grace", "rhythm", "flow", "North"],
-    //reversed: "You've lost your rhythm. Return to the music of your soul."
+    keywords: ["messages", "memory", "communication", "intuition"],
+    reversed: "Forgotten languages hold unheard truths."
   },
   {
     id: 24,
@@ -261,8 +261,8 @@ export const oracleCards = [
     number: "XX",
     image: "/assets/cards/seaweed.jpg",
     meaning: "Underwater roots anchor surface grace.",
-    //keywords: ["grace", "rhythm", "flow", "North"],
-    //reversed: "You've lost your rhythm. Return to the music of your soul."
+    keywords: ["roots", "anchor", "grace", "underwater"],
+    reversed: "Surface beauty needs deep foundation."
   },
   {
     id: 25,
@@ -272,8 +272,8 @@ export const oracleCards = [
     number: "XXI",
     image: "/assets/cards/dice.jpg",
     meaning: "Chance favors the curious heart.",
-    //keywords: ["grace", "rhythm", "flow", "North"],
-    //reversed: "You've lost your rhythm. Return to the music of your soul."
+    keywords: ["chance", "curiosity", "risk", "fortune"],
+    reversed: "Calculated moves lose magic's favor."
   },
   {
     id: 26,
@@ -283,8 +283,8 @@ export const oracleCards = [
     number: "XXII",
     image: "/assets/cards/almond-tree.jpg",
     meaning: "First bloomer teaches faith in unseen spring.",
-    //keywords: ["grace", "rhythm", "flow", "North"],
-    //reversed: "You've lost your rhythm. Return to the music of your soul."
+    keywords: ["faith", "early blooming", "courage", "hope"],
+    reversed: "Premature blooming risks winter's return."
   },
   {
     id: 27,
@@ -294,8 +294,8 @@ export const oracleCards = [
     number: "XXII",
     image: "/assets/cards/loose-thread.jpg",
     meaning: "Unraveling reveals the pattern underneath.",
-    //keywords: ["grace", "rhythm", "flow", "North"],
-    //reversed: "You've lost your rhythm. Return to the music of your soul."
+    keywords: ["unraveling", "pattern", "underneath", "revelation"],
+    reversed: "Pulling threads unravels more than intended."
   },
   {
     id: 28,
@@ -305,8 +305,8 @@ export const oracleCards = [
     number: "XXII",
     image: "/assets/cards/button.jpg",
     meaning: "Small fastenings hold large things together.",
-    //keywords: ["grace", "rhythm", "flow", "North"],
-    //reversed: "You've lost your rhythm. Return to the music of your soul."
+    keywords: ["fastening", "small", "together", "connection"],
+    reversed: "Broken connections scatter what should unite."
   },
   {
     id: 29,
@@ -316,8 +316,8 @@ export const oracleCards = [
     number: "XXV",
     image: "/assets/cards/broken-clock.jpg",
     meaning: "When time stops, eternity peers through.",
-    //keywords: ["grace", "rhythm", "flow", "North"],
-    //reversed: "You've lost your rhythm. Return to the music of your soul."
+    keywords: ["time", "eternity", "broken", "glimpse"],
+    reversed: "Broken time traps you in single moments."
   },
   {
     id: 30,
@@ -327,8 +327,8 @@ export const oracleCards = [
     number: "XXXIII",
     image: "/assets/cards/open-door.jpg",
     meaning: "Thresholds invite without demanding passage.",
-    //keywords: ["grace", "rhythm", "flow", "North"],
-    //reversed: "You've lost your rhythm. Return to the music of your soul."
+    keywords: ["threshold", "invitation", "passage", "choice"],
+    reversed: "Open doors remain portals, not prisons."
   },
   {
     id: 31,
@@ -338,8 +338,8 @@ export const oracleCards = [
     number: "XLIV",
     image: "/assets/cards/shooting-star.jpg",
     meaning: "Wishes burn brightest in their brief crossing.",
-    //keywords: ["grace", "rhythm", "flow", "North"],
-    //reversed: "You've lost your rhythm. Return to the music of your soul."
+    keywords: ["wishes", "brief", "bright", "crossing"],
+    reversed: "Fleeting moments demand full presence."
   },
   {
     id: 32,
@@ -349,8 +349,8 @@ export const oracleCards = [
     number: "XLIV",
     image: "/assets/cards/lost-sock.jpg",
     meaning: "Missing pieces make the whole more precious.",
-    //keywords: ["grace", "rhythm", "flow", "North"],
-    //reversed: "You've lost your rhythm. Return to the music of your soul."
+    keywords: ["missing", "precious", "whole", "appreciation"],
+    reversed: "Seeking completion misses present wholeness."
   },
   {
     id: 33,
@@ -360,8 +360,8 @@ export const oracleCards = [
     number: "LV",
     image: "/assets/cards/cobwebs.jpg",
     meaning: "Neglected corners weave their own beauty.",
-    //keywords: ["grace", "rhythm", "flow", "North"],
-    //reversed: "You've lost your rhythm. Return to the music of your soul."
+    keywords: ["neglect", "corners", "weave", "beauty"],
+    reversed: "Constant cleaning destroys natural artistry."
   }
   // ... Continue with more cards to reach 33 total
 ];
