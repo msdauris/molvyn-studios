@@ -1,0 +1,324 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    @apply text-true-black bg-pure-white antialiased;
+    font-feature-settings: 'kern' 1, 'liga' 1;
+    line-height: 1.6;
+    background-image: 
+      radial-gradient(circle at 25% 25%, #0066ff03 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, #ff6b0003 0%, transparent 50%);
+    background-size: 800px 800px, 600px 600px;
+    background-position: 0 0, 100% 100%;
+    background-attachment: fixed;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', system-ui, sans-serif;
+    @apply text-true-black;
+    font-feature-settings: 'kern' 1, 'liga' 1;
+  }
+
+  p {
+    @apply text-charcoal;
+    line-height: 1.6;
+  }
+
+  /* Technical elements use monospace */
+  .mono-text {
+    font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', 'Monaco', monospace;
+    @apply text-medium-gray;
+  }
+}
+
+@layer components {
+  /* Enhanced Architectural Button System */
+  .btn-primary {
+    @apply px-6 py-3 bg-true-black text-pure-white font-medium;
+    @apply transition-all duration-200 ease-sharp;
+    @apply hover:bg-charcoal hover:-translate-y-px;
+    @apply active:translate-y-0;
+    letter-spacing: 0.5px;
+    border: none;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    transition: left 0.5s;
+  }
+  
+  .btn-primary:hover::before {
+    left: 100%;
+  }
+  
+  .btn-secondary {
+    @apply px-6 py-3 bg-pure-white text-true-black font-medium;
+    @apply border border-gray-200 transition-all duration-200 ease-sharp;
+    @apply hover:border-true-black hover:-translate-y-px;
+    @apply active:translate-y-0;
+    letter-spacing: 0.5px;
+  }
+  
+  .btn-accent {
+    @apply px-6 py-3 bg-electric-blue text-pure-white font-medium;
+    @apply transition-all duration-200 ease-sharp;
+    @apply hover:bg-blue-700 hover:-translate-y-px;
+    @apply active:translate-y-0;
+    letter-spacing: 0.5px;
+    border: none;
+  }
+
+  /* Enhanced Architectural Card System */
+  .card {
+    @apply bg-pure-white border border-gray-100 transition-all duration-200 ease-sharp;
+    @apply hover:shadow-architectural;
+    border-radius: 0; /* Sharp corners */
+    position: relative;
+  }
+  
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #0066ff 0%, #ff6b00 50%, #0066ff 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .card:hover::before {
+    opacity: 0.1;
+  }
+  
+  .card-minimal {
+    @apply bg-cool-gray border-0 p-8;
+    @apply transition-all duration-200 ease-sharp;
+    position: relative;
+  }
+  
+  .card-minimal::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 20px;
+    height: 2px;
+    background: #0066ff;
+    opacity: 0.3;
+  }
+
+  .card-featured {
+    @apply bg-pure-white shadow-sharp border-0 p-8;
+    @apply transition-all duration-200 ease-sharp;
+    @apply hover:shadow-architectural;
+    position: relative;
+  }
+  
+  .card-featured::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #0066ff20, transparent);
+    pointer-events: none;
+  }
+
+  /* Navigation */
+  .nav-link {
+    @apply text-medium-gray font-medium transition-all duration-200;
+    @apply hover:text-true-black;
+    font-size: 0.875rem;
+    letter-spacing: 0.5px;
+  }
+  
+  .nav-link-active {
+    @apply text-true-black font-semibold;
+    position: relative;
+  }
+  
+  .nav-link-active::after {
+    content: '';
+    @apply absolute -bottom-1 left-0 w-full h-0.5 bg-true-black;
+  }
+
+  /* Enhanced Typography System */
+  .text-display {
+    font-size: clamp(2.5rem, 8vw, 6rem);
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+    font-weight: 700;
+    @apply text-true-black;
+    position: relative;
+  }
+  
+  .text-display::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #0066ff, #ff6b00);
+    opacity: 0.6;
+  }
+  
+  .text-architectural-xl {
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    font-weight: 600;
+    @apply text-true-black;
+  }
+  
+  .text-architectural-lg {
+    font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+    line-height: 1.3;
+    letter-spacing: 0;
+    font-weight: 500;
+    @apply text-true-black;
+  }
+  
+  .text-body {
+    @apply text-charcoal;
+    line-height: 1.6;
+    font-weight: 400;
+  }
+  
+  .text-subtle {
+    @apply text-medium-gray;
+    line-height: 1.5;
+    font-weight: 400;
+  }
+
+  /* Layout System */
+  .section-padding {
+    @apply py-20 lg:py-32;
+  }
+  
+  .container-padding {
+    @apply px-6 sm:px-8 lg:px-12 max-w-6xl mx-auto;
+  }
+  
+  .hero-section {
+    @apply bg-pure-white py-16 md:py-24;
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+  }
+
+  /* Micro-interactions */
+  .micro-hover {
+    @apply transition-all duration-200 ease-sharp;
+  }
+  
+  .micro-hover:hover {
+    transform: translateY(-1px) scale(1.01);
+  }
+  
+  .sharp-focus {
+    @apply focus:outline-none focus:ring-2 focus:ring-electric-blue/20;
+    @apply transition-all duration-150 ease-sharp;
+  }
+
+  /* Form Elements */
+  .input-field {
+    @apply w-full px-4 py-3 bg-pure-white border border-gray-200;
+    @apply sharp-focus text-true-black;
+    @apply transition-all duration-200 ease-sharp;
+    border-radius: 0; /* Sharp corners */
+    font-size: 1rem;
+  }
+  
+  .input-field:hover {
+    @apply border-medium-gray;
+  }
+  
+  .textarea-field {
+    @apply input-field resize-none;
+    min-height: 120px;
+  }
+
+  /* Accent Elements */
+  .accent-blue {
+    @apply text-electric-blue;
+  }
+  
+  .accent-amber {
+    @apply text-warm-amber;
+  }
+
+  /* Grid Precision */
+  .grid-architectural {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+  
+  .grid-precise {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .scale-102 {
+    transform: scale(1.02);
+  }
+  
+  .animate-micro-scale {
+    animation: microScale 0.2s ease-out;
+  }
+  
+  /* Dramatic whitespace utilities */
+  .space-dramatic {
+    margin: 4rem 0;
+  }
+  
+  .space-architectural {
+    margin: 6rem 0;
+  }
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f8f8f8;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #666666;
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #1a1a1a;
+}
