@@ -6,7 +6,16 @@ import DrawingArea from '../components/oracle/DrawingArea'
 import { useCardDraw } from '../hooks/useCardDraw'
 
 const OracleApp = () => {
-  const { drawnCards, drawCard, shuffleDeck, clearCards } = useCardDraw()
+  const { 
+    drawnCards, 
+    drawCard, 
+    shuffleDeck, 
+    clearCards, 
+    cardsRemaining, 
+    maxCards, 
+    canDrawMore, 
+    cardsDrawn 
+  } = useCardDraw()
   const [selectedCard, setSelectedCard] = useState(null)
 
   return (
@@ -64,7 +73,10 @@ const OracleApp = () => {
               onDrawCard={drawCard}
               onShuffle={shuffleDeck}
               onClear={clearCards}
-              cardsRemaining={33 - drawnCards.length}
+              cardsRemaining={cardsRemaining}
+              maxCards={maxCards}
+              canDrawMore={canDrawMore}
+              cardsDrawn={cardsDrawn}
             />
             
             <DrawingArea 

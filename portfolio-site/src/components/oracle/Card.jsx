@@ -28,17 +28,15 @@ const Card = ({ card, isExpanded = false, onClose, onCardClick, isRevealed = tru
     }
   }
 
-  const getSuitColor = (suit) => {
+  const getdirectionColor = (direction) => {
     const colors = {
-      'Passages': 'from-electric-blue to-charcoal',
-      'Craft': 'from-warm-amber to-charcoal',
-      'Journeys': 'from-medium-gray to-charcoal',
-      'Reflections': 'from-electric-blue to-true-black',
-      'Wisdom': 'from-warm-amber to-true-black',
-      'Harmony': 'from-medium-gray to-true-black',
-      'Foundations': 'from-charcoal to-true-black'
+      'North': { background: 'linear-gradient(to bottom right, #f97316, #000000)' },     // Orange to black
+      'East': { background: 'linear-gradient(to bottom right, #3b82f6, #000000)' },      // Blue to black
+      'West': { background: 'linear-gradient(to bottom right, #6b7280, #000000)' },      // Gray to black  
+      'South': { background: 'linear-gradient(to bottom right, #ef4444, #000000)' },     // Red to black
+      'Aether': { background: 'linear-gradient(to bottom right, #8b5cf6, #000000)' }     // Purple to black
     }
-    return colors[suit] || 'from-charcoal to-true-black'
+    return colors[direction] || { background: 'linear-gradient(to bottom right, #374151, #000000)' }
   }
 
   if (isExpanded) {
@@ -64,7 +62,7 @@ const Card = ({ card, isExpanded = false, onClose, onCardClick, isRevealed = tru
                 {card.name}
               </h2>
               <div className="flex items-center gap-2 mt-1">
-                <span className="text-sm text-gray-600">{card.suit}</span>
+                <span className="text-sm text-gray-600">{card.direction}</span>
                 <span className="text-gray-400">•</span>
                 <span className="text-sm text-gray-600">{card.element}</span>
                 <span className="text-gray-400">•</span>
@@ -82,7 +80,10 @@ const Card = ({ card, isExpanded = false, onClose, onCardClick, isRevealed = tru
           {/* Content */}
           <div className="p-6">
             {/* Card Image Placeholder */}
-            <div className={`w-full h-64 bg-gradient-to-br ${getSuitColor(card.suit)} rounded-xl mb-6 flex items-center justify-center text-white`}>
+            <div 
+              className="w-full h-64 rounded-xl mb-6 flex items-center justify-center text-white"
+              style={getdirectionColor(card.direction)}
+            >
               <div className="text-center">
                 <div className="text-4xl font-serif font-bold mb-2">{card.number}</div>
                 <div className="text-xl">{card.name}</div>
@@ -140,7 +141,10 @@ const Card = ({ card, isExpanded = false, onClose, onCardClick, isRevealed = tru
       onClick={() => onCardClick && onCardClick(card)}
       className="cursor-pointer"
     >
-      <div className={`w-24 h-36 bg-gradient-to-br ${getSuitColor(card.suit)} rounded-lg shadow-lg flex items-center justify-center text-white relative overflow-hidden`}>
+      <div 
+        className="w-24 h-36 rounded-lg shadow-lg flex items-center justify-center text-white relative overflow-hidden"
+        style={getdirectionColor(card.direction)}
+      >
         {/* Card Back (when not revealed) */}
         {!isRevealed && (
           <div className="absolute inset-0 bg-gradient-to-br from-charcoal to-true-black flex items-center justify-center">

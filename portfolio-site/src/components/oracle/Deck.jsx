@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { Shuffle, RotateCcw, Star } from 'lucide-react'
 
-const Deck = ({ onDrawCard, onShuffle, onClear, cardsRemaining }) => {
+const Deck = ({ onDrawCard, onShuffle, onClear, cardsRemaining, maxCards, canDrawMore, cardsDrawn }) => {
   return (
     <div className="card-featured text-center">
       <h2 className="text-architectural-lg mb-8">
@@ -13,8 +13,8 @@ const Deck = ({ onDrawCard, onShuffle, onClear, cardsRemaining }) => {
         <motion.div
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
-          onClick={onDrawCard}
-          className="relative cursor-pointer group micro-hover"
+          onClick={canDrawMore ? onDrawCard : undefined}
+          className={`relative group micro-hover ${canDrawMore ? 'cursor-pointer' : 'cursor-not-allowed opacity-50'}`}
         >
           {/* Stack of cards effect */}
           <div className="absolute inset-0 bg-medium-gray/20 transform rotate-2 opacity-40"></div>
@@ -48,6 +48,12 @@ const Deck = ({ onDrawCard, onShuffle, onClear, cardsRemaining }) => {
             transition={{ duration: 0.3 }}
           />
         </div>
+        
+        {cardsDrawn >= maxCards && (
+          <div className="mono-text text-xs text-subtle mt-2">
+            maximum cards drawn (draw up to {maxCards} cards)
+          </div>
+        )}
       </div>
 
       {/* Controls */}
@@ -56,10 +62,11 @@ const Deck = ({ onDrawCard, onShuffle, onClear, cardsRemaining }) => {
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           onClick={onDrawCard}
-          disabled={cardsRemaining === 0}
+          disabled={!canDrawMore}
           className="w-full btn-primary disabled:opacity-50 disabled:cursor-not-allowed micro-hover"
         >
-          {cardsRemaining === 0 ? 'deck empty' : 'draw card'}
+          {cardsDrawn >= maxCards ? `maximum reached (${maxCards} cards)` : 
+           cardsRemaining === 0 ? 'deck empty' : 'draw card'}
         </motion.button>
 
         <div className="flex gap-3">
