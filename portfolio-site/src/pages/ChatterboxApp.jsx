@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Chatterbox from '../components/chatterbox/Chatterbox'
-import FoldAnimation from '../components/chatterbox/FoldAnimation'
 import { getRandomMessage } from '../data/chatterboxMessages'
 
 const ChatterboxApp = () => {
@@ -14,7 +13,6 @@ const ChatterboxApp = () => {
     
     setIsAnimating(true)
     
-    // Simulate fold animation delay
     setTimeout(() => {
       const message = getRandomMessage()
       setCurrentMessage(message)
@@ -30,135 +28,156 @@ const ChatterboxApp = () => {
   }
 
   return (
-    <div className="min-h-screen bg-pure-white">
+    <div style={{ minHeight: '100vh', background: '#ffffff' }}>
       {/* Hero Section */}
-      <div className="hero-section bg-pure-white pt-20">
-        <div className="container-padding">
-          <motion.div
+      <section className="hero-section">
+        <div className="floating-element floating-1"></div>
+        <div className="floating-element floating-2"></div>
+        <div className="floating-element floating-3"></div>
+        
+        <div className="hero-content">
+          <motion.h1 
+            className="hero-title"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            digital<br/>chatterbox
+          </motion.h1>
+          
+          <motion.p 
+            className="hero-subtitle"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            className="text-center max-w-4xl mx-auto"
+            transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <h1 className="text-display mb-8">
-              digital chatterbox
-            </h1>
-            <p className="text-architectural-xl text-medium-gray leading-relaxed mb-8">
-              interactive fortune teller that unfolds wisdom with each click
-            </p>
-            <div className="mono-text text-sm text-subtle">
-              origami-inspired • randomized messages • playful divination
-            </div>
-          </motion.div>
+            interactive fortune teller that unfolds wisdom with each click
+          </motion.p>
         </div>
-      </div>
+        
+        <div className="scroll-indicator"></div>
+      </section>
 
-      {/* Main Chatterbox Interface */}
-      <div className="container-padding py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
-          {/* Chatterbox Component */}
-          <div className="flex justify-center">
-            <Chatterbox 
-              onFoldClick={handleFoldClick}
-              isAnimating={isAnimating}
-              currentMessage={currentMessage}
-            />
-          </div>
-
-          {/* Message Display & Controls */}
-          <div className="space-y-8">
-            {/* Current Message */}
-            <motion.div
-              key={currentMessage}
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="card-featured min-h-[200px] flex items-center justify-center"
-            >
+      {/* Chatterbox Interface */}
+      <section className="content-section">
+        <motion.div 
+          className="content-left"
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="content-title">interact</h2>
+        </motion.div>
+        
+        <motion.div 
+          className="content-right"
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: true }}
+        >
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'center' }}>
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+              <Chatterbox 
+                onFoldClick={handleFoldClick}
+                isAnimating={isAnimating}
+                currentMessage={currentMessage}
+              />
+            </div>
+            
+            <div>
               {currentMessage ? (
-                <div className="text-center">
-                  <p className="text-architectural-lg text-true-black leading-relaxed mb-6">
+                <div style={{ 
+                  padding: '2rem', 
+                  border: '1px solid #e0e0e0', 
+                  marginBottom: '2rem',
+                  minHeight: '150px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  textAlign: 'center'
+                }}>
+                  <p style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#000000' }}>
                     "{currentMessage}"
                   </p>
-                  <div className="w-12 h-px bg-electric-blue mx-auto"></div>
                 </div>
               ) : (
-                <p className="text-body text-center">
-                  click on the chatterbox folds to reveal your message
-                </p>
-              )}
-            </motion.div>
-
-            {/* Controls */}
-            <div className="flex gap-4">
-              <button
-                onClick={resetChatterbox}
-                className="btn-secondary flex-1 micro-hover"
-                disabled={isAnimating}
-              >
-                reset
-              </button>
-              <button
-                onClick={() => handleFoldClick('random')}
-                className="btn-primary flex-1 micro-hover"
-                disabled={isAnimating}
-              >
-                {isAnimating ? 'unfolding...' : 'quick draw'}
-              </button>
-            </div>
-
-            {/* Fold History */}
-            {foldHistory.length > 0 && (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: 'auto' }}
-                className="card-minimal"
-              >
-                <h3 className="text-architectural-lg mb-4">recent messages</h3>
-                <div className="space-y-3 max-h-40 overflow-y-auto">
-                  {foldHistory.slice(-5).reverse().map((entry, index) => (
-                    <motion.div
-                      key={entry.timestamp}
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                      className="text-sm text-body p-3 bg-cool-gray"
-                    >
-                      {entry.message}
-                    </motion.div>
-                  ))}
+                <div style={{ 
+                  padding: '2rem', 
+                  border: '1px solid #e0e0e0', 
+                  marginBottom: '2rem',
+                  minHeight: '150px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  textAlign: 'center'
+                }}>
+                  <p className="content-text">
+                    click on the chatterbox folds to reveal your message
+                  </p>
                 </div>
-              </motion.div>
-            )}
+              )}
+              
+              <div style={{ display: 'flex', gap: '1rem' }}>
+                <button
+                  onClick={resetChatterbox}
+                  className="btn-secondary"
+                  disabled={isAnimating}
+                  style={{ flex: 1 }}
+                >
+                  reset
+                </button>
+                <button
+                  onClick={() => handleFoldClick('random')}
+                  className="btn-primary"
+                  disabled={isAnimating}
+                  style={{ flex: 1 }}
+                >
+                  {isAnimating ? 'unfolding...' : 'quick draw'}
+                </button>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Recent Messages */}
+      {foldHistory.length > 0 && (
+        <section className="content-section">
+          <div className="content-left">
+            <h2 className="content-title">recent messages</h2>
+          </div>
+          <div className="content-right">
+            {foldHistory.slice(-3).reverse().map((entry, index) => (
+              <div key={entry.timestamp} className="project-card">
+                <p className="project-description">"{entry.message}"</p>
+                <div className="project-meta">
+                  <span>message {foldHistory.length - index}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* About */}
+      <section className="content-section">
+        <div className="content-left">
+          <h2 className="content-title">about</h2>
+        </div>
+        <div className="content-right">
+          <p className="content-text">
+            like its paper ancestor, this digital chatterbox holds the wisdom of chance 
+            and intention. each fold represents a different aspect of your inner knowing.
+          </p>
+          <div className="content-meta" style={{ marginTop: '2rem' }}>
+            origami-inspired design<br/>
+            randomized wisdom<br/>
+            playful divination
           </div>
         </div>
-      </div>
-
-      {/* Instructions */}
-      <div className="bg-cool-gray section-padding">
-        <div className="container-padding">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center max-w-3xl mx-auto"
-          >
-            <h2 className="text-architectural-xl mb-8">
-              the art of digital divination
-            </h2>
-            <div className="space-y-6 text-body leading-relaxed">
-              <p>
-                like its paper ancestor, this digital chatterbox holds the wisdom of chance 
-                and intention. each fold represents a different aspect of your inner knowing—
-                past, present, future, and the hidden currents that flow between them.
-              </p>
-              <p>
-                the messages within are drawn from the same mystical well as the threshold oracle, 
-                connecting you to the deeper patterns that guide your journey.
-              </p>
-            </div>
-          </motion.div>
-        </div>
-      </div>
+      </section>
     </div>
   )
 }
