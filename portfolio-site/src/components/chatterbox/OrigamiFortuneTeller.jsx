@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState, useCallback } from 'react'
-import { directions, mysticalNumbers, mundaneObjects, generateFortune } from '../../data/fortuneTellerData'
 
 const OrigamiFortuneTeller = () => {
   const canvasRef = useRef(null)
