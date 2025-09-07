@@ -4,9 +4,10 @@ import { oracleCards, shuffleDeck } from '../data/oracleCards'
 export const useCardDraw = () => {
   const [drawnCards, setDrawnCards] = useState([])
   const [deck, setDeck] = useState(oracleCards)
+  const MAX_CARDS = 9
 
   const drawCard = useCallback(() => {
-    if (deck.length === 0) return null
+    if (deck.length === 0 || drawnCards.length >= MAX_CARDS) return null
 
     const randomIndex = Math.floor(Math.random() * deck.length)
     const drawnCard = deck[randomIndex]
@@ -51,12 +52,13 @@ export const useCardDraw = () => {
 
   const drawMultiple = useCallback((count) => {
     const cards = []
-    for (let i = 0; i < count && deck.length > 0; i++) {
+    const maxDrawable = Math.min(count, MAX_CARDS - drawnCards.length)
+    for (let i = 0; i < maxDrawable && deck.length > 0; i++) {
       const card = drawCard()
       if (card) cards.push(card)
     }
     return cards
-  }, [drawCard, deck.length])
+  }, [drawCard, deck.length, drawnCards.length, MAX_CARDS])
 
   return {
     drawnCards,
@@ -65,6 +67,9 @@ export const useCardDraw = () => {
     shuffleDeck: shuffleCards,
     clearCards,
     drawMultiple,
-    cardsRemaining: deck.length
+    cardsRemaining: deck.length,
+    maxCards: MAX_CARDS,
+    canDrawMore: drawnCards.length < MAX_CARDS && deck.length > 0,
+    cardsDrawn: drawnCards.length
   }
 }

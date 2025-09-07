@@ -28,17 +28,15 @@ const Card = ({ card, isExpanded = false, onClose, onCardClick, isRevealed = tru
     }
   }
 
-  const getSuitColor = (suit) => {
+  const getdirectionColor = (direction) => {
     const colors = {
-      'Passages': 'from-electric-blue to-charcoal',
-      'Craft': 'from-warm-amber to-charcoal',
-      'Journeys': 'from-medium-gray to-charcoal',
-      'Reflections': 'from-electric-blue to-true-black',
-      'Wisdom': 'from-warm-amber to-true-black',
-      'Harmony': 'from-medium-gray to-true-black',
-      'Foundations': 'from-charcoal to-true-black'
+      'North': { background: 'linear-gradient(to bottom right, #f97316, #000000)' },     // Orange to black
+      'East': { background: 'linear-gradient(to bottom right, #3b82f6, #000000)' },      // Blue to black
+      'West': { background: 'linear-gradient(to bottom right, #6b7280, #000000)' },      // Gray to black  
+      'South': { background: 'linear-gradient(to bottom right, #ef4444, #000000)' },     // Red to black
+      'Aether': { background: 'linear-gradient(to bottom right, #8b5cf6, #000000)' }     // Purple to black
     }
-    return colors[suit] || 'from-charcoal to-true-black'
+    return colors[direction] || { background: 'linear-gradient(to bottom right, #374151, #000000)' }
   }
 
   if (isExpanded) {
@@ -47,84 +45,120 @@ const Card = ({ card, isExpanded = false, onClose, onCardClick, isRevealed = tru
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50"
+        className="fixed inset-0 bg-white/95 backdrop-blur-sm flex items-center justify-center p-8 z-50"
         onClick={onClose}
       >
         <motion.div
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          exit={{ scale: 0.8, opacity: 0 }}
+          initial={{ scale: 0.95, opacity: 0, y: 20 }}
+          animate={{ scale: 1, opacity: 1, y: 0 }}
+          exit={{ scale: 0.95, opacity: 0, y: 20 }}
           onClick={(e) => e.stopPropagation()}
-          className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+          className="bg-white max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+          style={{ 
+            boxShadow: '0 0 0 1px rgba(0,0,0,0.05)',
+            border: 'none'
+          }}
         >
-          {/* Header */}
-          <div className="sticky top-0 bg-white border-b border-gray-200 p-6 flex items-center justify-between rounded-t-2xl">
-            <div>
-              <h2 className="text-2xl font-serif font-bold text-gray-900">
+          {/* Close Button - Minimal */}
+          <button
+            onClick={onClose}
+            className="absolute top-8 right-8 p-2 hover:bg-gray-50 transition-colors duration-200 z-10"
+            style={{ background: 'none', border: 'none' }}
+          >
+            <X className="h-5 w-5 text-gray-400 hover:text-gray-600" />
+          </button>
+
+          {/* Content Grid */}
+          <div className="content-section" style={{ padding: '6rem 4rem' }}>
+            <div className="content-left" style={{ position: 'static' }}>
+              <h2 className="section-title" style={{ marginBottom: '2rem' }}>
                 {card.name}
               </h2>
-              <div className="flex items-center gap-2 mt-1">
-                <span className="text-sm text-gray-600">{card.suit}</span>
-                <span className="text-gray-400">•</span>
-                <span className="text-sm text-gray-600">{card.element}</span>
-                <span className="text-gray-400">•</span>
-                <span className="text-sm font-medium text-electric-blue">{card.number}</span>
+              
+              {/* Card Meta */}
+              <div style={{ marginBottom: '3rem' }}>
+                <div className="mono-text text-xs text-subtle" style={{ marginBottom: '0.5rem' }}>
+                  {card.direction} • {card.element} • {card.number}
+                </div>
               </div>
             </div>
-            <button
-              onClick={onClose}
-              className="p-2 hover:bg-gray-100 rounded-lg transition-colors duration-200"
-            >
-              <X className="h-6 w-6 text-gray-500" />
-            </button>
-          </div>
-
-          {/* Content */}
-          <div className="p-6">
-            {/* Card Image Placeholder */}
-            <div className={`w-full h-64 bg-gradient-to-br ${getSuitColor(card.suit)} rounded-xl mb-6 flex items-center justify-center text-white`}>
-              <div className="text-center">
-                <div className="text-4xl font-serif font-bold mb-2">{card.number}</div>
-                <div className="text-xl">{card.name}</div>
-                <div className="text-sm opacity-80 mt-2">{card.element}</div>
+            
+            <div className="content-right">
+              {/* Card Visual */}
+              <div 
+                style={{ 
+                  width: '200px',
+                  height: '300px',
+                  marginBottom: '3rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: 'white',
+                  position: 'relative',
+                  overflow: 'hidden',
+                  ...getdirectionColor(card.direction)
+                }}
+              >
+                <div style={{ textAlign: 'center', padding: '1rem' }}>
+                  <div style={{ fontSize: '1.5rem', fontWeight: '900', marginBottom: '0.5rem' }}>
+                    {card.number}
+                  </div>
+                  <div style={{ fontSize: '0.875rem', fontWeight: '600', lineHeight: '1.2' }}>
+                    {card.name}
+                  </div>
+                  <div style={{ fontSize: '0.75rem', opacity: 0.8, marginTop: '0.5rem' }}>
+                    {card.element}
+                  </div>
+                </div>
+                
+                {/* Mystical border effect - matching original cards */}
+                <div style={{
+                  position: 'absolute',
+                  inset: 0,
+                  border: '1px solid rgba(255, 255, 255, 0.2)'
+                }}></div>
               </div>
-            </div>
 
-            {/* Meaning */}
-            <div className="mb-6">
-              <h3 className="text-lg font-semibold mb-3 text-gray-900">Meaning</h3>
-              <p className="text-gray-700 leading-relaxed text-lg">
-                {card.meaning}
-              </p>
-            </div>
-
-            {/* Keywords */}
-            <div className="mb-6">
-              <h3 className="text-lg font-semibold mb-3 text-gray-900">Keywords</h3>
-              <div className="flex flex-wrap gap-2">
-                {card.keywords.map((keyword) => (
-                  <span
-                    key={keyword}
-                    className="px-3 py-1 bg-electric-blue/10 text-electric-blue text-sm font-medium mono-text"
-                  >
-                    {keyword}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            {/* Reversed Meaning */}
-            {card.reversed && (
-              <div className="bg-gray-50 rounded-lg p-4">
-                <h3 className="text-lg font-semibold mb-2 text-gray-900 flex items-center gap-2">
-                  <RotateCcw className="h-5 w-5" />
-                  Reversed Meaning
-                </h3>
-                <p className="text-gray-700 leading-relaxed">
-                  {card.reversed}
+              {/* Meaning */}
+              <div style={{ marginBottom: '3rem' }}>
+                <h3 className="text-xl font-semibold mb-4 text-true-black">Meaning</h3>
+                <p className="content-text" style={{ fontSize: '1.1rem', lineHeight: '1.8' }}>
+                  {card.meaning}
                 </p>
               </div>
-            )}
+
+              {/* Keywords */}
+              <div style={{ marginBottom: '3rem' }}>
+                <h3 className="text-xl font-semibold mb-4 text-true-black">Keywords</h3>
+                {card.keywords && Array.isArray(card.keywords) && card.keywords.length > 0 ? (
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+                    {card.keywords.map((keyword, index) => (
+                      <span
+                        key={`${keyword}-${index}`}
+                        className="mono-text"
+                        style={{
+                          display: 'inline-block',
+                          padding: '0.5rem 1rem',
+                          backgroundColor: '#f8f8f8',
+                          color: '#000000',
+                          fontSize: '0.875rem',
+                          fontWeight: '500',
+                          border: '1px solid #e0e0e0',
+                          letterSpacing: '0.5px'
+                        }}
+                      >
+                        {keyword}
+                      </span>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="content-text" style={{ fontStyle: 'italic', color: '#666666' }}>
+                    No keywords available for this card.
+                  </p>
+                )}
+              </div>
+
+            </div>
           </div>
         </motion.div>
       </motion.div>
@@ -140,7 +174,19 @@ const Card = ({ card, isExpanded = false, onClose, onCardClick, isRevealed = tru
       onClick={() => onCardClick && onCardClick(card)}
       className="cursor-pointer"
     >
-      <div className={`w-24 h-36 bg-gradient-to-br ${getSuitColor(card.suit)} rounded-lg shadow-lg flex items-center justify-center text-white relative overflow-hidden`}>
+      <div 
+        style={{
+          width: '96px',
+          height: '144px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          color: 'white',
+          position: 'relative',
+          overflow: 'hidden',
+          ...getdirectionColor(card.direction)
+        }}
+      >
         {/* Card Back (when not revealed) */}
         {!isRevealed && (
           <div className="absolute inset-0 bg-gradient-to-br from-charcoal to-true-black flex items-center justify-center">
@@ -154,14 +200,14 @@ const Card = ({ card, isExpanded = false, onClose, onCardClick, isRevealed = tru
         {/* Card Front */}
         {isRevealed && (
           <div className="text-center p-2">
-            <div className="text-lg font-serif font-bold mb-1">{card.number}</div>
-            <div className="text-xs font-medium leading-tight">{card.name}</div>
-            <div className="text-xs opacity-80 mt-1">{card.element}</div>
+            <div style={{ fontSize: '1.125rem', fontWeight: '900', marginBottom: '0.25rem' }}>{card.number}</div>
+            <div style={{ fontSize: '0.75rem', fontWeight: '600', lineHeight: '1.2' }}>{card.name}</div>
+            <div style={{ fontSize: '0.75rem', opacity: 0.8, marginTop: '0.25rem' }}>{card.element}</div>
           </div>
         )}
 
         {/* Mystical border effect */}
-        <div className="absolute inset-0 border border-white/20 rounded-lg"></div>
+        <div className="absolute inset-0 border border-white/20"></div>
       </div>
     </motion.div>
   )

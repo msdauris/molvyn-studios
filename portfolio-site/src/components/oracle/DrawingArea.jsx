@@ -46,7 +46,7 @@ const DrawingArea = ({ drawnCards, onCardSelect, selectedCard }) => {
             className="flex items-center justify-center h-64 text-center"
           >
             <div>
-              <div className="w-16 h-16 bg-electric-blue/10 flex items-center justify-center mx-auto mb-4">
+              <div className="flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl">🔮</span>
               </div>
               <h3 className="text-architectural-lg mb-3">
@@ -99,7 +99,7 @@ const DrawingArea = ({ drawnCards, onCardSelect, selectedCard }) => {
       </AnimatePresence>
 
       {/* Spread Interpretations */}
-      {drawnCards.length > 1 && (
+      {drawnCards.length > 0 && (
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -140,22 +140,32 @@ const DrawingArea = ({ drawnCards, onCardSelect, selectedCard }) => {
 
 const getSpreadName = (cardCount) => {
   const names = {
-    2: 'Two-Card Dialogue',
-    3: 'Past-Present-Future',
-    4: 'Four Elements Spread',
-    5: 'Cross of Light'
+    1: 'The Singular Truth',
+    2: 'The Sacred Dialogue', 
+    3: 'The Elemental Trinity',
+    4: 'The Four Winds Compass',
+    5: 'The Quintessence Cross',
+    6: 'The Hexagram of Becoming',
+    7: 'The Mystic Heptagon',
+    8: 'The Infinite Cycle',
+    9: 'The Sacred Mandala'
   }
-  return names[cardCount] || `${cardCount}-Card Spread`
+  return names[cardCount] || `${cardCount}-Card Reading`
 }
 
 const getSpreadDescription = (cardCount) => {
   const descriptions = {
-    2: 'Two perspectives on your question, showing different aspects or choices.',
-    3: 'The classic three-card spread revealing the flow of time and energy.',
-    4: 'Each card represents one of the four elements: Earth, Air, Fire, Water.',
-    5: 'A deeper exploration with cards for situation, challenge, past, future, and outcome.'
+    1: 'One card holds the whispered truth your soul needs to hear right now.',
+    2: 'Two cards dance together—question and answer, shadow and light, earth and sky.',
+    3: 'Three cards weave the eternal pattern: what was, what is, and what wishes to be born.',
+    4: 'Four cards call from the cardinal directions, each wind carrying its ancient wisdom to your crossroads.',
+    5: 'Five cards form the sacred cross—four elements crowned by spirit, revealing the hidden fifth essence.',
+    6: 'Six cards bloom like petals around your question, each facet catching different light from the same truth.',
+    7: 'Seven cards spiral through the mystical journey—the sacred number that bridges earth and heaven.',
+    8: 'Eight cards complete the eternal wheel, showing how endings become beginnings in the endless dance.',
+    9: 'Nine cards create the perfect mandala—three times three, the sacred completion where all wisdom converges.'
   }
-  return descriptions[cardCount] || 'A custom spread for deeper insight into your question.'
+  return descriptions[cardCount] || `A ${cardCount}-card reading offering layers of meaning and guidance.`
 }
 
 export default DrawingArea
