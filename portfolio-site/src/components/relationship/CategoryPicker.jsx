@@ -2,41 +2,43 @@ import { motion } from 'framer-motion'
 
 const CategoryPicker = ({ options, onSelect, selected, title }) => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr">
       {options.map((option, index) => (
         <motion.button
           key={option.id}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3, delay: index * 0.1 }}
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
+          whileHover={{ y: -2 }}
+          whileTap={{ y: 0 }}
           onClick={() => onSelect(option)}
-          className={`p-8 border-2 transition-all duration-200 text-left micro-hover ${
+          className={`relative h-full p-8 border-2 transition-colors duration-150 text-left micro-hover flex flex-col shadow-gentle ${
             selected?.id === option.id
-              ? 'border-electric-blue bg-blue-50/50 shadow-sharp'
-              : 'border-gray-200 bg-pure-white hover:border-electric-blue/50 hover:shadow-gentle'
+              ? 'border-electric-blue bg-blue-50/50'
+              : 'border-gray-200 bg-pure-white hover:border-electric-blue/50'
           }`}
         >
-          <div className="flex items-start gap-4">
+          <div className="flex-1">
             {option.icon && (
-              <div className="text-2xl flex-shrink-0 mt-1">
+              <div className="text-3xl mb-4 text-center">
                 {option.icon}
               </div>
             )}
-            <div className="flex-1">
+            <div>
               <h3 className={`font-medium text-lg mb-3 ${
                 selected?.id === option.id ? 'text-true-black' : 'text-true-black'
               }`}>
                 {option.label}
               </h3>
-              {option.description && (
-                <p className={`text-sm leading-relaxed ${
-                  selected?.id === option.id ? 'text-charcoal' : 'text-medium-gray'
-                }`}>
-                  {option.description}
-                </p>
-              )}
+              <div className="min-h-[1.5rem]">
+                {option.description && (
+                  <p className={`text-sm leading-relaxed ${
+                    selected?.id === option.id ? 'text-charcoal' : 'text-medium-gray'
+                  }`}>
+                    {option.description}
+                  </p>
+                )}
+              </div>
             </div>
           </div>
           
