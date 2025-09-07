@@ -1,9 +1,9 @@
 export const relationshipTypes = [
-  { id: 'romantic', label: 'Romantic Partnership', icon: '💕' },
-  { id: 'family', label: 'Family Connection', icon: '👨‍👩‍👧‍👦' },
-  { id: 'friendship', label: 'Friendship', icon: '🤝' },
-  { id: 'work', label: 'Professional/Work', icon: '💼' },
-  { id: 'creative', label: 'Creative Collaboration', icon: '🎨' }
+  { id: 'romantic', label: 'Romantic Partnership', icon: '💕', description: 'Intimate romantic connection' },
+  { id: 'family', label: 'Family Connection', icon: '👨‍👩‍👧‍👦', description: 'Blood or chosen family bonds' },
+  { id: 'friendship', label: 'Friendship', icon: '🤝', description: 'Platonic companionship' },
+  { id: 'work', label: 'Professional', icon: '💼', description: 'Workplace collaboration' },
+  { id: 'creative', label: 'Creative Collaboration', icon: '🎨', description: 'Artistic partnership' }
 ];
 
 export const relationshipStages = [

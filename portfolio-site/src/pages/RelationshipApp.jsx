@@ -2,12 +2,14 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import CategoryPicker from '../components/relationship/CategoryPicker'
 import QuestionCard from '../components/relationship/QuestionCard'
+import PricingOverlay from '../components/relationship/PricingOverlay'
 import { relationshipTypes, relationshipStages, sampleQuestions } from '../data/synastryPreviewData'
 
 const RelationshipApp = () => {
   const [selectedType, setSelectedType] = useState(null)
   const [selectedStage, setSelectedStage] = useState(null)
   const [currentQuestions, setCurrentQuestions] = useState([])
+  const [showPricingOverlay, setShowPricingOverlay] = useState(false)
 
   const generateQuestions = () => {
     if (!selectedType || !selectedStage) return
@@ -169,7 +171,10 @@ const RelationshipApp = () => {
                 <button onClick={resetForm} className="btn-secondary">
                   try different relationship
                 </button>
-                <button className="btn-primary">
+                <button 
+                  onClick={() => setShowPricingOverlay(true)}
+                  className="btn-primary"
+                >
                   get full analysis
                 </button>
               </div>
@@ -177,6 +182,14 @@ const RelationshipApp = () => {
           </div>
         </section>
       )}
+
+      {/* Pricing Overlay */}
+      <PricingOverlay
+        isOpen={showPricingOverlay}
+        onClose={() => setShowPricingOverlay(false)}
+        selectedType={selectedType}
+        selectedStage={selectedStage}
+      />
     </div>
   )
 }
