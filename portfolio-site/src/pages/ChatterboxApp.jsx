@@ -26,7 +26,7 @@ const ChatterboxApp = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            interactive divination that unfolds wisdom through ancient paper folding
+            interactive paper folding divination for daily guidance
           </motion.p>
         </div>
         
@@ -42,7 +42,7 @@ const ChatterboxApp = () => {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2 className="content-title">divine</h2>
+          <h2 className="content-title">seek fortune</h2>
         </motion.div>
         
         <motion.div 
@@ -56,22 +56,29 @@ const ChatterboxApp = () => {
         </motion.div>
       </section>
 
+      {/* How to Use */}
+      <section className="content-section">
+        <div className="content-left">
+          <h2 className="content-title">how to use</h2>
+        </div>
+        <div className="content-right">
+          <p className="content-text">
+            click a direction on the origami to begin. the paper will fold and unfold based on 
+            your selections. choose numbers and objects as they appear, then receive your fortune.
+          </p>
+        </div>
+      </section>
+
       {/* About */}
       <section className="content-section">
         <div className="content-left">
           <h2 className="content-title">about</h2>
         </div>
         <div className="content-right">
-          <p className="content-text">
-            this digital origami fortune teller recreates the ancient art of paper folding divination. 
-            choose your direction, select a mystical number, pick an object, and let the universe 
-            reveal its wisdom through the sacred geometry of folded paper.
-          </p>
-          <div className="content-meta" style={{ marginTop: '2rem' }}>
-            svg-based origami simulation<br/>
-            gsap vector point animations<br/>
-            mystical number sequences<br/>
-            personalized fortune generation
+          <div className="content-meta">
+            <p>canvas-based origami simulation</p>
+            <p>authentic folding animations</p>
+            <p>oracle card integration</p>
           </div>
         </div>
       </section>

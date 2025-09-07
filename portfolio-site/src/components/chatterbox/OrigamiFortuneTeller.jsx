@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, useCallback } from 'react'
+import { oracleCards } from '../../data/oracleCards'
 
 const OrigamiFortuneTeller = () => {
   const canvasRef = useRef(null)
@@ -12,11 +13,24 @@ const OrigamiFortuneTeller = () => {
   const [animationCount, setAnimationCount] = useState(0)
   const [maxAnimations, setMaxAnimations] = useState(0)
   const [animationPhase, setAnimationPhase] = useState(0)
+  const [isHovering, setIsHovering] = useState(false)
 
-  // Canvas dimensions
-  const width = 300
-  const height = 300
-  const w = 100
+  // Canvas dimensions - Much larger for better presence
+  const width = 450
+  const height = 450
+  const w = 150
+
+  // Randomize oracle cards for objects - filter out names longer than 10 characters
+  const getRandomObjects = useCallback(() => {
+    const filteredCards = oracleCards.filter(card => card.name.length <= 10)
+    const shuffled = [...filteredCards].sort(() => Math.random() - 0.5)
+    return {
+      horizontal: shuffled.slice(0, 4),
+      vertical: shuffled.slice(4, 8)
+    }
+  }, [])
+
+  const [randomObjects, setRandomObjects] = useState(() => getRandomObjects())
 
   // Draw origami using exact reference code geometry
   const drawOrigami = useCallback((phase = 0, isHorizontal = true) => {
@@ -41,12 +55,29 @@ const OrigamiFortuneTeller = () => {
       y = Math.max(y, w / 2) - (w / 2)
     }
     
+    // Add subtle hover breathing effect
+    if (isHovering && !isAnimating) {
+      const breathe = Math.sin(Date.now() / 800) * 3
+      x += breathe * 0.3
+      y += breathe * 0.3
+    }
+    
     context.clearRect(0, 0, width, height)
     
-    // Inside triangles (lighter colors)
-    context.fillStyle = '#e74c3c' // Red
-    context.strokeStyle = '#c0392b'
-    context.lineWidth = 2
+    // No shadow for now
+    context.shadowColor = 'transparent'
+    context.shadowOffsetX = 0
+    context.shadowOffsetY = 0
+    
+    // Inside triangles - Sophisticated gradient colors
+    // Create gradients for each quadrant
+    const neGradient = context.createLinearGradient(width/2, height/2 - w, width/2 + w, height/2)
+    neGradient.addColorStop(0, '#f8f9fa')
+    neGradient.addColorStop(1, '#e9ecef')
+    
+    context.fillStyle = neGradient
+    context.strokeStyle = '#dee2e6'
+    context.lineWidth = 1
     
     // NE inside triangles
     context.beginPath()
@@ -64,8 +95,12 @@ const OrigamiFortuneTeller = () => {
     context.stroke()
     
     // SE inside triangles
-    context.fillStyle = '#3498db' // Blue
-    context.strokeStyle = '#2980b9'
+    const seGradient = context.createLinearGradient(width/2, height/2, width/2 + w, height/2 + w)
+    seGradient.addColorStop(0, '#f1f3f4')
+    seGradient.addColorStop(1, '#e8eaed')
+    
+    context.fillStyle = seGradient
+    context.strokeStyle = '#dee2e6'
     
     context.beginPath()
     context.moveTo(width/2 + x, height/2 + y)
@@ -82,8 +117,12 @@ const OrigamiFortuneTeller = () => {
     context.stroke()
     
     // NW inside triangles
-    context.fillStyle = '#9b59b6' // Purple
-    context.strokeStyle = '#8e44ad'
+    const nwGradient = context.createLinearGradient(width/2 - w, height/2 - w, width/2, height/2)
+    nwGradient.addColorStop(0, '#f5f5f5')
+    nwGradient.addColorStop(1, '#eeeeee')
+    
+    context.fillStyle = nwGradient
+    context.strokeStyle = '#dee2e6'
     
     context.beginPath()
     context.moveTo(width/2 - x, height/2 - y)
@@ -100,8 +139,12 @@ const OrigamiFortuneTeller = () => {
     context.stroke()
     
     // SW inside triangles
-    context.fillStyle = '#27ae60' // Green
-    context.strokeStyle = '#229954'
+    const swGradient = context.createLinearGradient(width/2 - w, height/2, width/2, height/2 + w)
+    swGradient.addColorStop(0, '#f3f4f6')
+    swGradient.addColorStop(1, '#e5e7eb')
+    
+    context.fillStyle = swGradient
+    context.strokeStyle = '#dee2e6'
     
     context.beginPath()
     context.moveTo(width/2 - x, height/2 + y)
@@ -117,9 +160,13 @@ const OrigamiFortuneTeller = () => {
     context.fill()
     context.stroke()
     
-    // Outside flaps (darker colors)
-    context.fillStyle = '#c0392b' // Darker red
-    context.strokeStyle = '#a93226'
+    // Outside flaps (shadow gradients)
+    const neOuterGradient = context.createLinearGradient(width/2, height/2 - w, width/2 + w, height/2)
+    neOuterGradient.addColorStop(0, '#e9ecef')
+    neOuterGradient.addColorStop(1, '#ced4da')
+    
+    context.fillStyle = neOuterGradient
+    context.strokeStyle = '#adb5bd'
     
     // NE outside flap
     context.beginPath()
@@ -132,8 +179,12 @@ const OrigamiFortuneTeller = () => {
     context.stroke()
     
     // SE outside flap
-    context.fillStyle = '#2980b9' // Darker blue
-    context.strokeStyle = '#21618c'
+    const seOuterGradient = context.createLinearGradient(width/2, height/2, width/2 + w, height/2 + w)
+    seOuterGradient.addColorStop(0, '#e8eaed')
+    seOuterGradient.addColorStop(1, '#ced4da')
+    
+    context.fillStyle = seOuterGradient
+    context.strokeStyle = '#adb5bd'
     
     context.beginPath()
     context.moveTo(width/2 + x, height/2 + y)
@@ -145,8 +196,12 @@ const OrigamiFortuneTeller = () => {
     context.stroke()
     
     // NW outside flap
-    context.fillStyle = '#8e44ad' // Darker purple
-    context.strokeStyle = '#7d3c98'
+    const nwOuterGradient = context.createLinearGradient(width/2 - w, height/2 - w, width/2, height/2)
+    nwOuterGradient.addColorStop(0, '#eeeeee')
+    nwOuterGradient.addColorStop(1, '#d1d5db')
+    
+    context.fillStyle = nwOuterGradient
+    context.strokeStyle = '#adb5bd'
     
     context.beginPath()
     context.moveTo(width/2 - x, height/2 - y)
@@ -158,8 +213,12 @@ const OrigamiFortuneTeller = () => {
     context.stroke()
     
     // SW outside flap
-    context.fillStyle = '#229954' // Darker green
-    context.strokeStyle = '#1e8449'
+    const swOuterGradient = context.createLinearGradient(width/2 - w, height/2, width/2, height/2 + w)
+    swOuterGradient.addColorStop(0, '#e5e7eb')
+    swOuterGradient.addColorStop(1, '#d1d5db')
+    
+    context.fillStyle = swOuterGradient
+    context.strokeStyle = '#adb5bd'
     
     context.beginPath()
     context.moveTo(width/2 - x, height/2 + y)
@@ -172,7 +231,7 @@ const OrigamiFortuneTeller = () => {
     
     // Draw text labels if needed
     if (gameState === 'direction') {
-      context.fillStyle = 'white'
+      context.fillStyle = '#333333' // Charcoal color
       context.font = 'bold 14px Arial'
       context.textAlign = 'center'
       context.textBaseline = 'middle'
@@ -184,13 +243,13 @@ const OrigamiFortuneTeller = () => {
     }
     
     if (gameState === 'number' && selectedColor) {
-      context.fillStyle = 'white'
+      context.fillStyle = '#333333' // Charcoal color
       context.font = 'bold 18px Arial'
       context.textAlign = 'center'
       context.textBaseline = 'middle'
       
-      // Show different numbers based on final position
-      const numbers = selectedColor.finalHorizontal ? ['1', '2', '3', '4'] : ['5', '6', '7', '8']
+      // Show different numbers based on final position - authentic origami layout
+      const numbers = selectedColor.finalHorizontal ? ['1', '4', '5', '8'] : ['2', '3', '6', '7']
       context.fillText(numbers[0], width/2 - w/2, height/2 - w/2)
       context.fillText(numbers[1], width/2 + w/2, height/2 - w/2)
       context.fillText(numbers[2], width/2 - w/2, height/2 + w/2)
@@ -198,26 +257,22 @@ const OrigamiFortuneTeller = () => {
     }
     
     if (gameState === 'object' && selectedNumber) {
-      context.fillStyle = 'white'
+      context.fillStyle = '#333333' // Charcoal color
       context.font = 'bold 12px Arial'
       context.textAlign = 'center'
       context.textBaseline = 'middle'
       
-      // Oracle card objects - different sets based on final position after number selection
-      const horizontalObjects = ['Pebble', 'Rusted Key', 'Doll', 'Mushroom']
-      const verticalObjects = ['Spilled Tea', 'Puddle', 'Tiny Shell', 'Seaweed']
-      
-      // Show objects based on position after direction + number counting
+      // Use randomized oracle cards based on final position after number selection
       const totalCounts = selectedColor.count + selectedNumber
       const currentIsHorizontal = totalCounts % 2 === 1
-      const objects = currentIsHorizontal ? horizontalObjects : verticalObjects
+      const objects = currentIsHorizontal ? randomObjects.horizontal : randomObjects.vertical
       
-      context.fillText(objects[0], width/2 - w/2, height/2 - w/2)
-      context.fillText(objects[1], width/2 + w/2, height/2 - w/2)
-      context.fillText(objects[2], width/2 - w/2, height/2 + w/2)
-      context.fillText(objects[3], width/2 + w/2, height/2 + w/2)
+      context.fillText(objects[0].name, width/2 - w/2, height/2 - w/2)
+      context.fillText(objects[1].name, width/2 + w/2, height/2 - w/2)
+      context.fillText(objects[2].name, width/2 - w/2, height/2 + w/2)
+      context.fillText(objects[3].name, width/2 + w/2, height/2 + w/2)
     }
-  }, [gameState, selectedColor, width, height, w])
+  }, [gameState, selectedColor, selectedNumber, randomObjects, isAnimating, animationCount, width, height, w])
 
   // Animate origami with alternating horizontal/vertical counting
   const animateOrigami = (totalCounts, onComplete) => {
@@ -270,6 +325,28 @@ const OrigamiFortuneTeller = () => {
   useEffect(() => {
     drawOrigami(0, true) // Start in closed horizontal position
   }, [drawOrigami])
+
+  // Hover animation loop
+  useEffect(() => {
+    let hoverAnimationFrame
+    
+    const animateHover = () => {
+      if (isHovering && !isAnimating) {
+        drawOrigami(0, true)
+        hoverAnimationFrame = requestAnimationFrame(animateHover)
+      }
+    }
+    
+    if (isHovering && !isAnimating) {
+      animateHover()
+    }
+    
+    return () => {
+      if (hoverAnimationFrame) {
+        cancelAnimationFrame(hoverAnimationFrame)
+      }
+    }
+  }, [isHovering, isAnimating, drawOrigami])
 
   // Cleanup animation frame on unmount
   useEffect(() => {
@@ -335,12 +412,9 @@ const OrigamiFortuneTeller = () => {
     // Animate based on object name length
     animateOrigami(objectLetterCount, () => {
       setTimeout(() => {
-        // Create a simple fortune using the selected elements
+        // Create a simple fortune using just the object's meaning
         const fortune = {
-          opener: `The ${selectedColor.name} path leads to ${object.name}...`,
-          influence: `Through the power of ${selectedNumber}, you discover:`,
-          message: object.meaning,
-          summary: `Trust in the wisdom of ${selectedColor.name}, ${selectedNumber}, and ${object.name}.`
+          message: object.meaning
         }
         setFortune(fortune)
         setGameState('fortune')
@@ -374,8 +448,8 @@ const OrigamiFortuneTeller = () => {
         handleColorSelect('West') // Bottom-right
       }
     } else if (gameState === 'number') {
-      // Handle number selection based on quadrant
-      const numbers = selectedColor?.finalHorizontal ? [1, 2, 3, 4] : [5, 6, 7, 8]
+      // Handle number selection based on quadrant - authentic origami layout
+      const numbers = selectedColor?.finalHorizontal ? [1, 4, 5, 8] : [2, 3, 6, 7]
       let selectedNum
       
       if (canvasX < width/2 && canvasY < height/2) {
@@ -390,24 +464,11 @@ const OrigamiFortuneTeller = () => {
       
       handleNumberSelect(selectedNum)
     } else if (gameState === 'object') {
-      // Handle object selection based on quadrant
-      const horizontalObjects = [
-        { name: 'Pebble', meaning: 'Small weight carries ancient memory.' },
-        { name: 'Rusted Key', meaning: 'What once opened still remembers the way.' },
-        { name: 'Doll', meaning: 'Forgotten play holds tomorrow\'s truth.' },
-        { name: 'Mushroom', meaning: 'Hidden networks speak beneath your feet.' }
-      ]
-      const verticalObjects = [
-        { name: 'Spilled Tea', meaning: 'Accidents pour wisdom onto unexpected places.' },
-        { name: 'Puddle', meaning: 'Temporary mirrors reflect permanent truths.' },
-        { name: 'Tiny Shell', meaning: 'Ocean whispers fit in the palm of your hand.' },
-        { name: 'Seaweed', meaning: 'Underwater roots anchor surface grace.' }
-      ]
-      
+      // Handle object selection using randomized oracle cards
       // Determine current position after direction + number counting
       const totalCounts = selectedColor.count + selectedNumber
       const currentIsHorizontal = totalCounts % 2 === 1
-      const objects = currentIsHorizontal ? horizontalObjects : verticalObjects
+      const objects = currentIsHorizontal ? randomObjects.horizontal : randomObjects.vertical
       
       let selectedObject
       if (canvasX < width/2 && canvasY < height/2) {
@@ -438,6 +499,10 @@ const OrigamiFortuneTeller = () => {
     setFortune(null)
     setAnimationCount(0)
     setMaxAnimations(0)
+    
+    // Generate new random objects for next game
+    setRandomObjects(getRandomObjects())
+    
     drawOrigami(0, true) // Reset to closed horizontal position
   }
 
@@ -463,20 +528,6 @@ const OrigamiFortuneTeller = () => {
 
   return (
     <div className="origami-fortune-teller">
-      {/* Animation Counter */}
-      {isAnimating && (
-        <div className="animation-counter">
-          <p>Counting: {animationCount} / {maxAnimations}</p>
-          <p>
-            {selectedColor && `${selectedColor.name} (${selectedColor.count} letters)`}
-            {selectedNumber && `Number ${selectedNumber} (${selectedNumber} counts)`}
-            {selectedObject && `${selectedObject.name} (${selectedObject.name.replace(/\s+/g, '').length} letters)`}
-          </p>
-          <p>
-            {animationCount % 2 === 1 ? 'X-AXIS (HORIZONTAL)' : 'Y-AXIS (VERTICAL)'}
-          </p>
-        </div>
-      )}
 
       <div className="container">
         {/* Step Title */}
@@ -493,11 +544,13 @@ const OrigamiFortuneTeller = () => {
             width={width}
             height={height}
             onClick={handleCanvasClick}
+            onMouseEnter={() => setIsHovering(true)}
+            onMouseLeave={() => setIsHovering(false)}
             style={{ 
               cursor: 'pointer',
-              border: '2px solid #333',
-              borderRadius: '10px',
-              filter: 'drop-shadow(0 10px 30px rgba(0, 0, 0, 0.4))'
+              border: 'none',
+              borderRadius: '8px',
+              transition: 'transform 0.2s ease'
             }}
           />
         </div>
@@ -515,20 +568,18 @@ const OrigamiFortuneTeller = () => {
           )}
         </div>
 
-        {/* Fortune Display */}
+        {/* Fortune Display Overlay */}
         {gameState === 'fortune' && fortune && (
-          <div className="fortune-display">
-            <h3>Your Fortune</h3>
-            <div className="fortune-content">
-              <p className="fortune-opener">{fortune.opener}</p>
-              <p className="fortune-influence">{fortune.influence}</p>
+          <>
+            <div className="fortune-backdrop" onClick={resetGame}></div>
+            <div className="fortune-display">
+              <h3>Your Fortune</h3>
               <p className="fortune-message">{fortune.message}</p>
-              <p className="fortune-summary">{fortune.summary}</p>
+              <button className="btn-primary" onClick={resetGame}>
+                Seek Another Fortune
+              </button>
             </div>
-            <button className="btn-primary" onClick={resetGame}>
-              Seek Another Fortune
-            </button>
-          </div>
+          </>
         )}
       </div>
     </div>
