@@ -14,13 +14,18 @@ const Header = () => {
   const handleNavClick = (e, href) => {
     e.preventDefault()
     
-    // If we're not on the homepage, navigate there first then scroll
+    // If we're not on the homepage, navigate there first
     if (location.pathname !== '/') {
-      window.location.href = `/${href}`
+      // Use React Router navigation instead of window.location
+      // This will trigger the Home component which clears hash and scrolls to top
+      // Then we'll handle the section scrolling separately
+      window.location.href = '/'
+      // Store the intended section in sessionStorage for after navigation
+      sessionStorage.setItem('scrollToSection', href)
       return
     }
     
-    // If we're on homepage, scroll to section
+    // If we're on homepage, scroll to section immediately
     const element = document.querySelector(href)
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' })
@@ -36,7 +41,18 @@ const Header = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
       >
-        <Link to="/" className="text-inherit no-underline">
+        <Link 
+          to="/" 
+          className="text-inherit no-underline"
+          onClick={(e) => {
+            // If already on homepage, scroll to top
+            if (location.pathname === '/') {
+              e.preventDefault()
+              window.scrollTo({ top: 0, behavior: 'smooth' })
+            }
+            // If on other pages, let normal navigation happen (will go to top via Home useEffect)
+          }}
+        >
           molvyn studios
         </Link>
       </motion.div>

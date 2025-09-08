@@ -405,21 +405,15 @@ const OrigamiFortuneTeller = () => {
     
     setSelectedObject(object)
     
-    // Count based on letters in object name (e.g., "Pebble" = 6 letters)
-    const objectLetterCount = object.name.replace(/\s+/g, '').length // Remove spaces for counting
-    console.log(`Selected ${object.name} - ${objectLetterCount} letters, will count ${objectLetterCount} times`)
+    // Immediately show fortune without counting animation
+    console.log(`Selected ${object.name} - revealing fortune`)
     
-    // Animate based on object name length
-    animateOrigami(objectLetterCount, () => {
-      setTimeout(() => {
-        // Create a simple fortune using just the object's meaning
-        const fortune = {
-          message: object.meaning
-        }
-        setFortune(fortune)
-        setGameState('fortune')
-      }, 500)
-    })
+    // Create a simple fortune using just the object's meaning
+    const fortune = {
+      message: object.meaning
+    }
+    setFortune(fortune)
+    setGameState('fortune')
   }
 
   const handleCanvasClick = (event) => {

@@ -190,6 +190,10 @@ The site is configured for easy deployment on Vercel:
 ### Immediate Next Steps - Chatterbox App ✅ FOUNDATION COMPLETE
 **Current Status**: Basic origami fortune teller functionality implemented with authentic paper folding behavior.
 
+**Animation References & Inspiration**:
+- [Animated Paper Fortune Teller](https://observablehq.com/@puripant/animated-paper-fortune-teller) - Canvas 2D geometric animation logic
+- [Jill's Fortune Teller](https://www.jillortenberg.com/fortune-teller) - SVG vector point animation technique and game flow inspiration
+
 **Completed in this Sprint**:
 - ✅ Canvas-based origami drawing with proper geometry
 - ✅ Alternating horizontal/vertical folding animations
