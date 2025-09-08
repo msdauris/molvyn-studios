@@ -8,15 +8,25 @@ import VoiceoverSamples from '../components/portfolio/VoiceoverSamples'
 
 const Home = () => {
   useEffect(() => {
-    // Handle hash scrolling when navigating to homepage with hash
-    const hash = window.location.hash
-    if (hash) {
+    // Always clear hash first
+    window.history.replaceState(null, null, '/')
+    
+    // Check if we need to scroll to a specific section (from nav click)
+    const scrollToSection = sessionStorage.getItem('scrollToSection')
+    
+    if (scrollToSection) {
+      // Clear the stored section
+      sessionStorage.removeItem('scrollToSection')
+      // Scroll to the intended section after a delay
       setTimeout(() => {
-        const element = document.querySelector(hash)
+        const element = document.querySelector(scrollToSection)
         if (element) {
           element.scrollIntoView({ behavior: 'smooth' })
         }
-      }, 100) // Small delay to ensure page is loaded
+      }, 100)
+    } else {
+      // Default behavior: scroll to top (for back button)
+      window.scrollTo(0, 0)
     }
   }, [])
 

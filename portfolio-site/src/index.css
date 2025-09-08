@@ -144,6 +144,7 @@
     display: flex;
     gap: 2rem;
     align-items: center;
+    justify-content: center;
     margin-top: 2rem;
     position: relative;
     z-index: 2;
@@ -427,6 +428,427 @@
       padding: 0.75rem 1.5rem;
       font-size: 0.85rem;
       min-width: 180px;
+    }
+  }
+
+  /* Origami Fortune Teller - Architectural Minimal Design */
+  .origami-fortune-teller {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 1rem;
+    background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
+    position: relative;
+  }
+
+  /* Mobile-first responsive design */
+  @media (max-width: 768px) {
+    .origami-fortune-teller {
+      padding: 1rem 0.75rem;
+      justify-content: flex-start;
+      padding-top: 2rem;
+    }
+  }
+
+  .origami-fortune-teller::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      linear-gradient(90deg, #000000 1px, transparent 1px),
+      linear-gradient(#000000 1px, transparent 1px);
+    background-size: 60px 60px;
+    opacity: 0.02;
+    pointer-events: none;
+  }
+
+  .animation-counter {
+    position: absolute;
+    top: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    color: #f5f3ed;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    text-align: center;
+    font-family: 'Courier New', monospace;
+    font-size: 1.1rem;
+    z-index: 10;
+    border: 1px solid rgba(218, 165, 32, 0.3);
+  }
+
+  .animation-counter p {
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .animation-counter p:first-child {
+    font-weight: bold;
+    color: #daa520;
+  }
+
+  .origami-fortune-teller .container {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 800px;
+  }
+
+  @media (max-width: 768px) {
+    .origami-fortune-teller .container {
+      gap: 1.5rem;
+      max-width: 100%;
+      padding: 0 1rem;
+    }
+  }
+
+  .origami-fortune-teller .step {
+    text-align: center;
+    color: #000000;
+    margin-bottom: 1rem;
+    max-width: 700px;
+  }
+
+  .origami-fortune-teller .step h2 {
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: #000000;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+
+  .origami-fortune-teller .step p {
+    font-size: 1.1rem;
+    color: #666666;
+    margin-bottom: 0;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 768px) {
+    .origami-fortune-teller .step {
+      margin-bottom: 1rem;
+      padding: 0 0.5rem;
+    }
+
+    .origami-fortune-teller .step h2 {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .origami-fortune-teller .step p {
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+  }
+
+  .origami-container {
+    position: relative;
+    margin: 1rem 0;
+    padding: 0.5rem;
+  }
+
+  .origami-canvas {
+    border-radius: 8px;
+    transition: transform 0.2s ease;
+    cursor: pointer;
+  }
+
+  .origami-canvas:hover {
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 768px) {
+    .origami-container {
+      margin: 0.5rem 0;
+      padding: 0.25rem;
+    }
+
+    .origami-canvas {
+      width: 350px !important;
+      height: 350px !important;
+      border-radius: 6px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .origami-canvas {
+      width: 300px !important;
+      height: 300px !important;
+    }
+  }
+
+  /* Text Labels */
+  .direction-text, .number-text, .object-text {
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    font-weight: bold;
+    fill: #4a2c1a;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    user-select: none;
+  }
+
+  .direction-text:hover, .number-text:hover, .object-text:hover {
+    fill: #daa520;
+    font-size: 16px;
+  }
+
+  .number-text {
+    font-size: 18px;
+    fill: #8b4513;
+  }
+
+  .number-text:hover {
+    fill: #daa520;
+    font-size: 20px;
+  }
+
+  .object-text {
+    font-size: 20px;
+  }
+
+  .object-text:hover {
+    font-size: 24px;
+  }
+
+  /* Instructions */
+  .instructions {
+    text-align: center;
+    margin: 0.75rem 0;
+    position: relative;
+  }
+
+  .instructions p {
+    font-size: 1rem;
+    color: #666666;
+    margin: 0;
+    padding: 0.75rem;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 768px) {
+    .instructions {
+      margin: 1rem 0;
+    }
+
+    .instructions p {
+      font-size: 0.9rem;
+      padding: 0.5rem;
+      line-height: 1.4;
+    }
+  }
+
+  /* Fortune Display - Overlay that spins out from origami */
+  .origami-fortune-teller .fortune-display {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0) rotate(-180deg);
+    max-width: 500px;
+    width: 90vw;
+    text-align: center;
+    background: #ffffff;
+    padding: 3rem;
+    border: none;
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.05);
+    z-index: 1000;
+    animation: fortuneSpinIn 0.8s ease-out forwards;
+  }
+
+  @media (max-width: 768px) {
+    .origami-fortune-teller .fortune-display {
+      width: 85vw;
+      max-width: 350px;
+      padding: 2rem 1.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .origami-fortune-teller .fortune-display {
+      width: 90vw;
+      max-width: 320px;
+      padding: 1.5rem 1rem;
+    }
+  }
+
+  @keyframes fortuneSpinIn {
+    0% {
+      transform: translate(-50%, -50%) scale(0) rotate(-180deg);
+      opacity: 0;
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(1) rotate(0deg);
+      opacity: 1;
+    }
+  }
+
+  /* Fortune Backdrop */
+  .origami-fortune-teller .fortune-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 999;
+    cursor: pointer;
+    animation: backdropFadeIn 0.3s ease-out;
+  }
+
+  @keyframes backdropFadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .origami-fortune-teller .fortune-display h3 {
+    font-size: 1.8rem;
+    color: #000000;
+    margin-bottom: 2rem;
+    font-weight: 300;
+  }
+
+  @media (max-width: 768px) {
+    .origami-fortune-teller .fortune-display h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .origami-fortune-teller .fortune-display h3 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+    }
+  }
+
+  .origami-fortune-teller .fortune-content {
+    margin-bottom: 2rem;
+  }
+
+  .origami-fortune-teller .fortune-opener {
+    font-size: 1.2rem;
+    color: #000000;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    font-weight: 400;
+  }
+
+  .origami-fortune-teller .fortune-influence {
+    font-size: 1rem;
+    color: #666666;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+  }
+
+  .origami-fortune-teller .fortune-message {
+    font-size: 1.1rem;
+    color: #000000;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    padding: 2rem;
+    background: #fafafa;
+    border-radius: 4px;
+    border-left: 3px solid #000000;
+  }
+
+  @media (max-width: 768px) {
+    .origami-fortune-teller .fortune-message {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      padding: 1.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .origami-fortune-teller .fortune-message {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+      padding: 1rem;
+    }
+  }
+
+  .origami-fortune-teller .fortune-summary {
+    font-size: 0.95rem;
+    color: #666666;
+    font-style: italic;
+    margin-bottom: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .origami-fortune-teller .btn-primary {
+    background: #000000;
+    color: #ffffff;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 0.9rem;
+    font-weight: 400;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    letter-spacing: 0.5px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  }
+
+  .origami-fortune-teller .btn-primary:hover {
+    background: #333333;
+    transform: translateY(-1px);
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .origami-svg {
+      width: 250px;
+      height: 250px;
+    }
+
+    .origami-fortune-teller .step h2 {
+      font-size: 2rem;
+    }
+
+    .origami-fortune-teller .step p {
+      font-size: 1rem;
+    }
+
+    .instructions p {
+      font-size: 1.1rem;
+      padding: 0.8rem 1.5rem;
+    }
+
+    .origami-fortune-teller .fortune-display {
+      padding: 2rem;
+      margin: 1rem;
+    }
+
+    .direction-text, .number-text, .object-text {
+      font-size: 12px;
+    }
+
+    .number-text {
+      font-size: 16px;
+    }
+
+    .object-text {
+      font-size: 18px;
     }
   }
 }
