@@ -1,4 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion'
+import { Share2, ShoppingCart, Copy } from 'lucide-react'
 import Card from './Card'
 
 const DrawingArea = ({ drawnCards, onCardSelect, selectedCard }) => {
@@ -9,6 +10,37 @@ const DrawingArea = ({ drawnCards, onCardSelect, selectedCard }) => {
       transition: {
         staggerChildren: 0.2
       }
+    }
+  }
+
+  const handleCopyReading = async () => {
+    const readingText = `My Oracle Reading - ${getSpreadName(drawnCards.length)}\n\n${getSpreadDescription(drawnCards.length)}\n\nCards drawn:\n${drawnCards.map((card, index) => `${index + 1}. ${card.name} - ${card.meaning}`).join('\n')}\n\nGenerated at: ${new Date().toLocaleDateString()}`
+    
+    try {
+      await navigator.clipboard.writeText(readingText)
+      // Could add a toast notification here in the future
+      console.log('Reading copied to clipboard')
+    } catch (err) {
+      console.log('Failed to copy reading')
+    }
+  }
+
+  const handleBuyDeck = () => {
+    // Placeholder for future shop integration
+    // window.open('https://your-shop-url.com/oracle-deck', '_blank')
+    console.log('Physical deck coming soon!')
+  }
+
+  const handleShareReading = () => {
+    // Simple web share or fallback to copy
+    if (navigator.share) {
+      navigator.share({
+        title: 'My Oracle Reading',
+        text: `I drew ${drawnCards.length} card${drawnCards.length > 1 ? 's' : ''} from the Threshold Oracle: ${drawnCards.map(card => card.name).join(', ')}`,
+        url: window.location.href
+      })
+    } else {
+      handleCopyReading()
     }
   }
 
@@ -121,16 +153,28 @@ const DrawingArea = ({ drawnCards, onCardSelect, selectedCard }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1 }}
-          className="mt-6 flex gap-3 text-sm"
+          className="mt-6 flex gap-4 text-sm"
         >
-          <button className="text-electric-blue hover:text-true-black transition-colors duration-200 mono-text text-xs">
-            save reading
+          <button 
+            onClick={handleCopyReading}
+            className="text-electric-blue hover:text-true-black transition-colors duration-200 mono-text text-xs flex items-center gap-1"
+          >
+            <Copy className="h-3 w-3" />
+            copy reading
           </button>
-          <button className="text-electric-blue hover:text-true-black transition-colors duration-200 mono-text text-xs">
+          <button 
+            onClick={handleShareReading}
+            className="text-electric-blue hover:text-true-black transition-colors duration-200 mono-text text-xs flex items-center gap-1"
+          >
+            <Share2 className="h-3 w-3" />
             share reading
           </button>
-          <button className="text-electric-blue hover:text-true-black transition-colors duration-200 mono-text text-xs">
-            print cards
+          <button 
+            onClick={handleBuyDeck}
+            className="text-electric-blue hover:text-true-black transition-colors duration-200 mono-text text-xs flex items-center gap-1"
+          >
+            <ShoppingCart className="h-3 w-3" />
+            buy physical deck
           </button>
         </motion.div>
       )}

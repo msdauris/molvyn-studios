@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
-import { Shuffle, RotateCcw, Star } from 'lucide-react'
+import { RotateCcw, Star } from 'lucide-react'
 
-const Deck = ({ onDrawCard, onShuffle, onClear, cardsRemaining, maxCards, canDrawMore, cardsDrawn }) => {
+const Deck = ({ onDrawCard, onClear, cardsRemaining, maxCards, canDrawMore, cardsDrawn }) => {
   return (
     <div className="card-featured text-center">
       <h2 className="text-architectural-lg mb-8">
@@ -69,27 +69,15 @@ const Deck = ({ onDrawCard, onShuffle, onClear, cardsRemaining, maxCards, canDra
            cardsRemaining === 0 ? 'deck empty' : 'draw card'}
         </motion.button>
 
-        <div className="flex gap-3">
-          <motion.button
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            onClick={onShuffle}
-            className="flex-1 btn-secondary flex items-center justify-center gap-2 micro-hover"
-          >
-            <Shuffle className="h-4 w-4" />
-            shuffle
-          </motion.button>
-
-          <motion.button
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            onClick={onClear}
-            className="flex-1 btn-secondary flex items-center justify-center gap-2 micro-hover"
-          >
-            <RotateCcw className="h-4 w-4" />
-            reset
-          </motion.button>
-        </div>
+        <motion.button
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          onClick={onClear}
+          className="w-full btn-secondary flex items-center justify-center gap-2 micro-hover"
+        >
+          <RotateCcw className="h-4 w-4" />
+          reset & shuffle
+        </motion.button>
       </div>
     </div>
   )

@@ -43,7 +43,8 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
         >
-          tools that bridge the technical and mystical
+          where technology meets creativity
+          portfolio of interactive tools, voice work, and visual storytelling
         </motion.p>
         
         <motion.div 

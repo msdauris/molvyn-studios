@@ -9,7 +9,6 @@ const OracleApp = () => {
   const { 
     drawnCards, 
     drawCard, 
-    shuffleDeck, 
     clearCards, 
     cardsRemaining, 
     maxCards, 
@@ -71,7 +70,6 @@ const OracleApp = () => {
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '4rem', alignItems: 'start' }}>
             <Deck 
               onDrawCard={drawCard}
-              onShuffle={shuffleDeck}
               onClear={clearCards}
               cardsRemaining={cardsRemaining}
               maxCards={maxCards}
