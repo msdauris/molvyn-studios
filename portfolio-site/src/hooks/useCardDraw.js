@@ -1,10 +1,15 @@
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 import { oracleCards, shuffleDeck } from '../data/oracleCards'
 
 export const useCardDraw = () => {
   const [drawnCards, setDrawnCards] = useState([])
-  const [deck, setDeck] = useState(oracleCards)
+  const [deck, setDeck] = useState(() => shuffleDeck()) // Auto-shuffle on initialization
   const MAX_CARDS = 9
+
+  // Auto-shuffle on component mount/page refresh
+  useEffect(() => {
+    setDeck(shuffleDeck())
+  }, [])
 
   const drawCard = useCallback(() => {
     if (deck.length === 0 || drawnCards.length >= MAX_CARDS) return null
@@ -47,7 +52,7 @@ export const useCardDraw = () => {
 
   const clearCards = useCallback(() => {
     setDrawnCards([])
-    setDeck(oracleCards)
+    setDeck(shuffleDeck()) // Auto-shuffle when clearing/resetting
   }, [])
 
   const drawMultiple = useCallback((count) => {
