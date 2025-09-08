@@ -190,7 +190,7 @@ This project is proprietary and confidential. All rights reserved.
 
 For inquiries about the project or collaboration opportunities:
 - Email: soyred@protonmail.com
-- Portfolio: [Live Site URL]
+- Portfolio: [[Live Site URL]](https://molvyn-studios.vercel.app)
 
 ---
 
