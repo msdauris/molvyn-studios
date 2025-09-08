@@ -1,0 +1,17 @@
+{
+  "name": "molvyn-studios",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Molvyn Studios - Creative portfolio and interactive applications",
+  "scripts": {
+    "dev": "cd portfolio-site && npm run dev",
+    "build": "cd portfolio-site && npm run build",
+    "preview": "cd portfolio-site && npm run preview",
+    "lint": "cd portfolio-site && npm run lint",
+    "deploy": "cd portfolio-site && npm run deploy",
+    "install": "cd portfolio-site && npm install"
+  },
+  "workspaces": [
+    "portfolio-site"
+  ]
+}
