@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import OracleApp from './pages/OracleApp'
 import ChatterboxApp from './pages/ChatterboxApp'
 import RelationshipApp from './pages/RelationshipApp'
+import Blog from './pages/Blog'
 
 function App() {
   return (
@@ -65,6 +66,32 @@ function App() {
                     transition={{ duration: 0.4, ease: "easeOut" }}
                   >
                     <RelationshipApp />
+                  </motion.div>
+                } 
+              />
+              <Route 
+                path="/blog" 
+                element={
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.4, ease: "easeOut" }}
+                  >
+                    <Blog />
+                  </motion.div>
+                } 
+              />
+              <Route 
+                path="/blog/:postId" 
+                element={
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.4, ease: "easeOut" }}
+                  >
+                    <Blog />
                   </motion.div>
                 } 
               />

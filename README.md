@@ -24,6 +24,15 @@ A creative portfolio website showcasing three interactive web applications that 
 - Development preview with pricing overlay
 - Foundation for premium analysis platform
 
+### Creative Journal (Blog)
+- Personal blog for documenting creative process
+- Full markdown support with rich formatting
+- Image embedding and media support
+- Tag system for content organization
+- Admin interface for easy content management
+- Local storage persistence (no database required)
+- Indie 90s aesthetic matching portfolio design
+
 ## 🎨 Design Philosophy
 
 **"2025 meets 2040 meets 1995"** - A unique aesthetic that combines:
@@ -39,6 +48,7 @@ A creative portfolio website showcasing three interactive web applications that 
 - **Animations**: Framer Motion for smooth interactions
 - **Icons**: Lucide React
 - **Routing**: React Router DOM
+- **Content**: React Markdown with GitHub Flavored Markdown
 - **Deployment**: Vercel
 
 ## 🚀 Getting Started
@@ -85,15 +95,18 @@ src/
 │   ├── portfolio/       # Hero, Projects, About, Contact, VoiceoverSamples
 │   ├── oracle/          # Card, Deck, DrawingArea
 │   ├── chatterbox/      # OrigamiFortuneTeller (Canvas-based)
-│   └── relationship/    # QuestionCard, CategoryPicker, PricingOverlay
+│   ├── relationship/    # QuestionCard, CategoryPicker, PricingOverlay
+│   └── blog/            # BlogPost, BlogFeed, BlogAdmin
 ├── pages/
 │   ├── Home.jsx         # Main portfolio page
 │   ├── OracleApp.jsx    # Oracle card application
 │   ├── ChatterboxApp.jsx # Digital chatterbox
-│   └── RelationshipApp.jsx # Synastry relationship tool
+│   ├── RelationshipApp.jsx # Synastry relationship tool
+│   └── Blog.jsx         # Creative journal blog
 ├── data/
 │   ├── oracleCards.js   # Oracle deck data and utilities (shared with chatterbox)
-│   └── synastryPreviewData.js # Relationship analysis data
+│   ├── synastryPreviewData.js # Relationship analysis data
+│   └── blogPosts.js     # Sample blog post data
 ├── hooks/
 │   ├── useCardDraw.js   # Oracle card drawing logic
 │   ├── useAnimation.js  # Animation utilities
@@ -157,6 +170,41 @@ The site is configured for easy deployment on Vercel:
 - SPA routing configured in `vercel.json`
 - Security headers included
 - Optimized for performance
+
+## ✨ Recent Updates
+
+### Oracle App Improvements ✅
+- **Auto-shuffle functionality**: Deck automatically shuffles on page load and reset
+- **Duplicate prevention**: Cards are properly removed from deck when drawn
+- **Streamlined UX**: Removed manual shuffle button for more mystical experience
+
+### Creative Journal (Blog) ✅ NEW FEATURE
+A complete blog system for documenting your creative journey:
+
+#### 📝 Content Management
+- **Full admin interface**: Triple-click the ⚙️ icon to enter admin mode
+- **Markdown support**: Rich text formatting with GitHub Flavored Markdown
+- **Image embedding**: Easy image insertion in posts with automatic styling
+- **Tag system**: Organize posts with custom tags for easy browsing
+- **Local storage**: All posts automatically save to browser localStorage
+
+#### 🎨 Design Features
+- **Indie 90s aesthetic**: Consistent with portfolio style using monospace fonts for dates/tags
+- **Responsive design**: Perfect experience on all devices
+- **Smooth animations**: Integrated with existing Framer Motion setup
+- **Reading experience**: Clean typography optimized for long-form content
+
+#### 🛠 Technical Features
+- **Markdown rendering**: Full support for headings, lists, code blocks, blockquotes
+- **Image handling**: Automatic responsive image sizing and styling
+- **Post sorting**: Automatically displays newest posts first
+- **Preview mode**: "Read more" functionality for post listings
+- **Sample content**: Includes example posts about ceramics and development
+
+#### 📍 Access
+- Navigate to `/blog` or use the "blog" link in the main navigation
+- Sample posts included showing ceramic process documentation and code updates
+- Perfect for documenting creative projects, ceramic experiments, and development progress
 
 ## 🔮 Future Enhancements
 

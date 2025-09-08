@@ -8,6 +8,7 @@ const Header = () => {
   const navigation = [
     { name: 'work', href: '#work' },
     { name: 'about', href: '#about' },
+    { name: 'blog', href: '/blog', isRoute: true },
     { name: 'contact', href: '#contact' }
   ]
 
@@ -65,16 +66,29 @@ const Header = () => {
         transition={{ duration: 0.6, delay: 0.4 }}
       >
         {navigation.map((item, index) => (
-          <motion.a
-            key={item.name}
-            href={item.href}
-            onClick={(e) => handleNavClick(e, item.href)}
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.6 + (index * 0.1) }}
-          >
-            {item.name}
-          </motion.a>
+          item.isRoute ? (
+            <motion.div
+              key={item.name}
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.6 + (index * 0.1) }}
+            >
+              <Link to={item.href} className="nav-link">
+                {item.name}
+              </Link>
+            </motion.div>
+          ) : (
+            <motion.a
+              key={item.name}
+              href={item.href}
+              onClick={(e) => handleNavClick(e, item.href)}
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.6 + (index * 0.1) }}
+            >
+              {item.name}
+            </motion.a>
+          )
         ))}
       </motion.nav>
     </>
