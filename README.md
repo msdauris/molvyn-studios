@@ -273,7 +273,7 @@ This project is proprietary and confidential. All rights reserved.
 
 For inquiries about the project or collaboration opportunities:
 - Email: soyred@protonmail.com
-- Website: [molvynstudios.com](https://molvynstudios.com)
+- Website: 
 
 ---
 
