@@ -8,21 +8,40 @@ const Projects = () => {
       title: 'threshold oracle',
       description: 'digital divination tool for daily reflection and insight',
       link: '/oracle',
-      status: 'live'
+      status: 'live',
+      type: 'digital'
     },
     {
-      id: 'chatterbox',
-      title: 'digital chatterbox',
+      id: 'origami',
+      title: 'origami fortune teller',
       description: 'interactive fortune teller that unfolds wisdom with each click',
-      link: '/chatterbox',
-      status: 'live'
+      link: '/origami',
+      status: 'live',
+      type: 'digital'
+    },
+    {
+      id: 'vendemmia',
+      title: 'vendemmia',
+      description: 'documentary-style video capturing local harvest traditions in spanish',
+      link: '#',
+      status: 'editing',
+      type: 'video'
+    },
+    {
+      id: 'drone-work',
+      title: 'aerial perspectives',
+      description: 'cinematic drone footage exploring landscapes and architecture',
+      link: '#',
+      status: 'coming soon',
+      type: 'video'
     },
     {
       id: 'synastry',
       title: 'relationship deepener',
       description: 'astrological compatibility questions for deeper connection',
       link: '/relationship',
-      status: 'development'
+      status: 'development',
+      type: 'digital'
     }
   ]
 
@@ -59,9 +78,15 @@ const Projects = () => {
             <div className="project-meta">
               <span>{project.status}</span>
               <span>•</span>
-              <Link to={project.link} className="project-link">
-                explore →
-              </Link>
+              {project.type === 'digital' ? (
+                <Link to={project.link} className="project-link">
+                  explore →
+                </Link>
+              ) : (
+                <span className="project-link project-link-disabled">
+                  {project.status === 'coming soon' ? 'preview soon' : 'watch soon'} →
+                </span>
+              )}
             </div>
           </motion.div>
         ))}
@@ -74,8 +99,8 @@ const Projects = () => {
           className="content-meta"
           style={{ marginTop: '3rem', paddingTop: '2rem', borderTop: '1px solid #f0f0f0' }}
         >
-          built with: react, tailwind, framer motion<br/>
-          process: design → prototype → refine → ship<br/>
+          digital: react, tailwind, framer motion<br/>
+          video: premiere, after effects, drone cinematography<br/>
           philosophy: minimal, functional, purposeful
         </motion.div>
       </motion.div>

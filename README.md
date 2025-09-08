@@ -1,269 +1,186 @@
 # Molvyn Studios Portfolio
 
-A creative portfolio website showcasing three interactive web applications that blend mysticism, technology, and human connection. Built with React, Vite, TailwindCSS, and Framer Motion.
-
-## 🌟 Featured Applications
-
-### The Threshold Oracle
-- 33-card mystical deck with Doré-style illustrations
-- Interactive card drawing with reveal animations
-- Cryptic oracle text and symbolic guidance
-- Shuffle and multi-card spread functionality
-
-### Digital Chatterbox (Origami Fortune Teller)
-- Canvas-based origami simulation with authentic folding physics
-- Interactive paper folding divination (Direction → Number → Object → Fortune)
-- Randomized oracle card integration for object selection
-- Alternating horizontal/vertical animations matching real origami behavior
-- Clean architectural design with gradient paper effects
-
-### Relationship 8Ball (Synastry Deepener)
-- Interactive relationship type and stage selection
-- Preview of personalized astrological questions
-- Architectural minimal design aesthetic
-- Development preview with pricing overlay
-- Foundation for premium analysis platform
+A creative portfolio website showcasing digital tools, voice work, and visual storytelling. Built with React and designed around Swiss/International typography principles with a minimal architectural design system.
 
 ## 🎨 Design Philosophy
 
-**"2025 meets 2040 meets 1995"** - A unique aesthetic that combines:
-- Cutting-edge technology and interactions
-- Timeless human wisdom and mystical elements
-- Nostalgic 90s design sensibilities
-- Clean, minimal layouts with intentional asymmetry
+**"Content is King"** - A minimal architectural design system prioritizing typography and intentional whitespace. Everything serves the typography and message.
+
+**Design Principles:**
+- Swiss/International typography methodology
+- Modern architectural web design
+- Intentional whitespace and hierarchy
+- Typography-first content presentation
+- Clean, functional layouts
+- Purposeful interactions over flashy effects
+
+**Aesthetic Values:**
+- Content over decoration
+- Function over form
+- Clarity over complexity
+- Intention over trends
+
+## 🌟 Featured Work
+
+### Interactive Applications
+- **Threshold Oracle** - Digital divination tool with auto-shuffling deck and functional sharing
+- **Digital Chatterbox** - Interactive origami fortune teller with authentic paper folding
+- **Relationship Deepener** - Astrological compatibility questions (development preview)
+
+### Voice & Sound
+- Professional voiceover samples across commercial, documentary, and media formats
+- Clean audio integration with functional playback controls
+- Portfolio showcasing range from luxury automotive to podcast hosting
+
+### Video Projects
+- **Vendemmia** - Documentary-style video capturing local harvest traditions (editing)
+- **Aerial Perspectives** - Cinematic drone footage exploring landscapes (coming soon)
 
 ## 🛠 Tech Stack
 
 - **Frontend**: React 19 + Vite
-- **Styling**: TailwindCSS with custom retro-future theme
-- **Animations**: Framer Motion for smooth interactions
+- **Styling**: TailwindCSS + Custom CSS
+- **Animations**: Framer Motion (minimal, purposeful)
 - **Icons**: Lucide React
 - **Routing**: React Router DOM
+- **Audio**: HTML5 Audio API + React hooks
 - **Deployment**: Vercel
-
-## 🚀 Getting Started
-
-### Prerequisites
-- Node.js 18+ 
-- npm or yarn
-
-### Installation
-
-```bash
-# Clone the repository
-git clone <repository-url>
-cd portfolio-site
-
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
-```
-
-### Available Scripts
-
-```bash
-# Development
-npm run dev          # Start dev server at http://localhost:5173
-
-# Production
-npm run build        # Build for production
-npm run preview      # Preview production build locally
-npm run deploy       # Build and deploy to Vercel
-
-# Code Quality
-npm run lint         # Run ESLint
-```
 
 ## 📁 Project Structure
 
 ```
 src/
 ├── components/
-│   ├── layout/          # Header, Footer, Navigation
+│   ├── layout/          # Header, Footer - minimal navigation
 │   ├── portfolio/       # Hero, Projects, About, Contact, VoiceoverSamples
 │   ├── oracle/          # Card, Deck, DrawingArea
 │   ├── chatterbox/      # OrigamiFortuneTeller (Canvas-based)
 │   └── relationship/    # QuestionCard, CategoryPicker, PricingOverlay
-├── pages/
-│   ├── Home.jsx         # Main portfolio page
-│   ├── OracleApp.jsx    # Oracle card application
-│   ├── ChatterboxApp.jsx # Digital chatterbox
-│   └── RelationshipApp.jsx # Synastry relationship tool
-├── data/
-│   ├── oracleCards.js   # Oracle deck data and utilities (shared with chatterbox)
-│   └── synastryPreviewData.js # Relationship analysis data
-├── hooks/
-│   ├── useCardDraw.js   # Oracle card drawing logic
-│   ├── useAnimation.js  # Animation utilities
-│   └── useAudio.js      # Audio player functionality
-└── assets/              # Images, audio files, etc.
+├── pages/               # Route components
+├── data/               # Oracle cards, preview data
+├── hooks/              # Audio, animation, card logic
+└── assets/             # Audio files (.wav format)
 ```
 
-## 🎯 Key Features
+## 🚀 Getting Started
 
-### Responsive Design
-- Mobile-first approach
-- Smooth animations across all devices
-- Touch-friendly interactions
+```bash
+# Install dependencies
+cd portfolio-site
+npm install
 
-### Performance Optimized
-- Vite for fast development and building
-- Code splitting with React Router
-- Optimized animations with Framer Motion
+# Start development server
+npm run dev
 
-### Accessibility
-- Semantic HTML structure
-- Keyboard navigation support
-- Screen reader friendly
-- High contrast color schemes
+# Build for production
+npm run build
+```
 
-### Interactive Elements
-- Card drawing animations
-- Origami folding effects
-- Smooth page transitions
-- Hover and touch interactions
+## ✅ Current Status (Ready for Launch)
 
-## 🎨 Custom Theme
+### Portfolio Foundation ✅
+- Minimal architectural design system implemented
+- Typography-first content hierarchy
+- Clean navigation and responsive layout
+- Professional contact integration
 
-The project uses a custom TailwindCSS theme featuring:
+### Oracle Application ✅
+- Auto-shuffling deck (no manual shuffle needed)
+- Functional copy/share reading features
+- "Buy physical deck" placeholder for future shop integration
+- Clean, accessible card interactions
 
-### Color Palette
-- **Sage**: Muted greens for earth elements
-- **Beige**: Warm neutrals for comfort
-- **Purple**: Mystical accents and primary actions
-- **Pastels**: Soft highlights and backgrounds
+### Voice & Sound Section ✅
+- 5 professional voiceover samples (WAV format)
+- Functional audio players with progress bars
+- Samples ordered by strength (podcast → luxury car → artisanal → documentary → tech)
+- Integrated styling matching site aesthetic
 
-### Typography
-- **Sans-serif**: Inter for body text and UI
-- **Serif**: Crimson Text for headings and emphasis
-- **Mono**: JetBrains Mono for code elements
+### Video Projects ✅
+- Vendemmia and aerial drone work showcased
+- Status indicators (editing, coming soon)
+- Smart link handling for incomplete projects
 
-### Animations
-- Custom keyframes for card flips, floating elements
-- Smooth transitions with easing functions
-- Responsive animation performance
+## 🔧 Immediate Fixes Needed
 
-## 🚀 Deployment
+### Critical (Pre-Launch)
+- [ ] **Audio File Optimization**: Convert WAV to optimized MP3 for faster loading
+- [ ] **Dev Server Issue**: Fix npm run dev command (currently requires `cd portfolio-site`)
+- [ ] **Performance Testing**: Test audio loading on mobile/slow connections
+- [ ] **SEO Meta Tags**: Add proper meta descriptions and social sharing tags
 
-The site is configured for easy deployment on Vercel:
+### Important (Week 1)
+- [ ] **Physical Deck Integration**: Connect "buy deck" button to actual shop/Amazon link
+- [ ] **Contact Form**: Add functional contact form (currently display only)
+- [ ] **Video Previews**: Add thumbnail images for video projects
+- [ ] **Analytics**: Implement basic tracking (Google Analytics or Plausible)
 
-1. **Automatic Deployment**: Connect your GitHub repository to Vercel
-2. **Manual Deployment**: Run `npm run deploy`
-3. **Environment Variables**: Configure any needed environment variables in Vercel dashboard
+## 🎯 Improvements Planned
 
-### Vercel Configuration
-- SPA routing configured in `vercel.json`
-- Security headers included
-- Optimized for performance
+### Design System Enhancements
+- [ ] **Typography Scale Refinement**: Fine-tune heading hierarchies
+- [ ] **Whitespace Optimization**: Audit spacing for perfect architectural balance
+- [ ] **Accessibility Audit**: Ensure AAA compliance across all interactions
+- [ ] **Performance Audit**: Optimize for Core Web Vitals
 
-## 🔮 Future Enhancements
+### Oracle Application Evolution
+- [ ] **Reading Persistence**: Save readings to localStorage with timestamps
+- [ ] **Keyboard Navigation**: Full keyboard support for accessibility
+- [ ] **Print Functionality**: Generate PDF readings for offline use
+- [ ] **Card Images**: Add visual card designs with flip animations
 
-### Immediate Next Steps - Oracle App
-- [ ] **Visual Enhancements**
-  - [ ] Add card images with flip animation (front/back toggle)
-  - [ ] Implement card twirl animation on reveal
-  - [ ] Add subtle sound effects (optional toggle)
-  - [ ] Enhance loading states and transitions
+### Voice & Sound Expansion
+- [ ] **Sample Categories**: Group by commercial/narration/character work
+- [ ] **Download Options**: Offer sample downloads for client review
+- [ ] **Testimonials**: Add client feedback and project context
+- [ ] **Service Packages**: Clearly defined voiceover service offerings
 
-- [ ] **Functionality Improvements**
-  - [ ] Reading persistence - save readings to localStorage
-  - [ ] Reading history - browse past readings with timestamps
-  - [ ] Intention setting - prompt for question/focus before drawing
-  - [ ] Export/share - make action buttons functional (save/share/print)
-  - [ ] Reading journal - add personal notes to readings
+### Video Integration
+- [ ] **Vendemmia Preview**: Add trailer/preview when editing complete
+- [ ] **Drone Reel**: Showcase aerial footage compilation
+- [ ] **Client Work**: Add branded video projects
+- [ ] **Behind the Scenes**: Process documentation for transparency
 
-- [ ] **Accessibility & UX**
-  - [ ] Keyboard navigation (spacebar to draw, arrows to navigate)
-  - [ ] Screen reader support for card meanings
-  - [ ] Better first-time user guidance
-  - [ ] Mobile touch gestures for card interactions
+## 🚀 Coming Soon
 
-- [ ] **Advanced Oracle Features**
-  - [ ] Upright/reversed functionality for cards
-  - [ ] Spread position meanings - explain what each card position represents
-  - [ ] Custom spreads - let users create their own layouts
-  - [ ] Card favorites - bookmark meaningful cards
-  - [ ] Reading templates - guided reading types (daily, weekly, etc.)
+### Short Term (Next 30 Days)
+- [ ] **Blog System**: Simple content management for creative process documentation
+- [ ] **Portfolio Expansion**: Additional client work showcases
+- [ ] **Contact System**: Functional inquiry form with email integration
 
-### Immediate Next Steps - Chatterbox App ✅ FOUNDATION COMPLETE
-**Current Status**: Basic origami fortune teller functionality implemented with authentic paper folding behavior.
+### Medium Term (Next 90 Days)
+- [ ] **Advanced Oracle Features**: Reading history, intention setting, custom spreads
+- [ ] **Voiceover Booking**: Calendar integration for voice work consultations
+- [ ] **Video Portfolio**: Complete Vendemmia launch
+- [ ] **Client Dashboard**: Private area for ongoing project collaboration
 
-**Animation References & Inspiration**:
-- [Animated Paper Fortune Teller](https://observablehq.com/@puripant/animated-paper-fortune-teller) - Canvas 2D geometric animation logic
-- [Jill's Fortune Teller](https://www.jillortenberg.com/fortune-teller) - SVG vector point animation technique and game flow inspiration
+### Long Term (Future Vision)
+- [ ] **Mobile Apps**: Native versions of interactive tools
+- [ ] **API Development**: Third-party integrations for oracle/voice services
+- [ ] **White Label Solutions**: Licensing model for other creative professionals
+- [ ] **Educational Content**: Workshops on digital creativity and intentional design
+- [ ] **Shop Integration**: Physical oracle deck sales via Etsy/Amazon
+- [ ] **Video Portfolio**: Drone work showcase
 
-**Completed in this Sprint**:
-- ✅ Canvas-based origami drawing with proper geometry
-- ✅ Alternating horizontal/vertical folding animations
-- ✅ Direction selection (North, East, South, West) with letter counting
-- ✅ Number selection (1-8) with authentic origami layout
-- ✅ Object selection using randomized oracle cards (filtered for readability)
-- ✅ Fortune display with clean overlay matching oracle app design
-- ✅ Mobile responsive design with proper scaling
-- ✅ Clean architectural color scheme and typography
-- ✅ Game reset functionality with new random objects
+## 🎨 Design Notes
 
-**Next Sprint Improvements**:
-- [ ] **Enhanced Visual Effects**
-  - [ ] Subtle paper texture overlays for more realistic appearance
-  - [ ] Improved gradient shadows that follow folding direction
-  - [ ] Smooth color transitions during folding animations
-  - [ ] Paper crease lines for authentic origami look
+### Typography System
+- **Headings**: Clean sans-serif hierarchy
+- **Body**: Optimized for readability across devices
+- **Monospace**: Used sparingly for technical/meta information
+- **Line Height**: Calculated for optimal reading rhythm
 
-- [ ] **Audio Integration** 
-  - [ ] Nostalgic paper-folding sound effects (subtle rustling)
-  - [ ] Optional click sounds for selections
-  - [ ] Ambient background audio toggle
-  - [ ] Voiceover fortune reading (text-to-speech integration)
+### Color Strategy
+- **Primary Orange (#ff6b35)**: Used for CTAs and active states only
+- **Neutral Grays**: Full spectrum for content hierarchy
+- **High Contrast**: Ensures accessibility across all text sizes
+- **Intentional Limitation**: Minimal palette supports content focus
 
-- [ ] **Interaction Enhancements**
-  - [ ] Haptic feedback on mobile devices
-  - [ ] Gesture support (swipe to reset, pinch to zoom)
-  - [ ] Keyboard navigation (arrow keys, spacebar, enter)
-  - [ ] Better hover states and visual feedback
-
-- [ ] **Fortune System Improvements**
-  - [ ] More sophisticated fortune generation using multiple oracle cards
-  - [ ] Fortune categories (love, career, personal growth, etc.)
-  - [ ] Reading history with timestamps and favorites
-  - [ ] Share fortune functionality (copy link, social media)
-  - [ ] Print-friendly fortune cards
-
-- [ ] **Performance & Polish**
-  - [ ] Animation performance optimization for lower-end devices
-  - [ ] Preload oracle card data for faster object selection
-  - [ ] Better loading states and error handling
-  - [ ] Accessibility improvements (screen reader support, high contrast mode)
-
-- [ ] **Advanced Features**
-  - [ ] Multiple origami styles/themes (different paper colors/patterns)
-  - [ ] Custom object sets (user can create their own fortune elements)
-  - [ ] Fortune interpretation guides and meanings
-  - [ ] Integration with oracle app for cross-app experiences
-
-### Immediate Next Steps - General
-- [ ] Audio integration for voiceover samples
-- [ ] PWA capabilities for offline use
-- [ ] Proper SEO meta tags and optimization
-
-### Relationship 8Ball - Premium Platform (Separate Repository)
-- [ ] **Backend Infrastructure**: Separate private repository for premium logic
-- [ ] **Domain Architecture**: Dedicated domain for premium relationship analysis
-- [ ] **Payment Integration**: Stripe/PayPal for subscription tiers
-- [ ] **Astrological Engine**: Real birth chart calculations and synastry analysis
-- [ ] **Human Design Integration**: Complete compatibility analysis system
-- [ ] **User Accounts**: Secure authentication and saved readings
-- [ ] **PDF Generation**: Downloadable relationship reports
-- [ ] **Audio Interpretations**: Personalized voice analysis recordings
-- [ ] **Consultation Booking**: Calendar integration for private sessions
-- [ ] **Analytics Dashboard**: User engagement and conversion tracking
-
-### Long-term Vision
-- [ ] Mobile app versions of all three applications
-- [ ] API for third-party integrations
-- [ ] White-label licensing for other practitioners
+### Interaction Design
+- **Subtle Animations**: Support content, never distract from it
+- **Hover States**: Clear feedback without being flashy
+- **Loading States**: Transparent and informative
+- **Error Handling**: Graceful degradation with clear messaging
 
 ## 📄 License
 
@@ -273,8 +190,8 @@ This project is proprietary and confidential. All rights reserved.
 
 For inquiries about the project or collaboration opportunities:
 - Email: soyred@protonmail.com
-- Website: 
+- Portfolio: [Live Site URL]
 
 ---
 
-*Crafted with intention at the intersection of technology and mysticism.*
+*Crafted with intention. Content is king.*

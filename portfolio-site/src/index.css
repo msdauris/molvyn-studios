@@ -852,3 +852,172 @@
     }
   }
 }
+
+/* Voiceover Samples Styles */
+.voiceover-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 2rem;
+}
+
+.voiceover-card {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(240, 240, 240, 0.1);
+  padding: 1.5rem 0;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.voiceover-card:last-child {
+  border-bottom: none;
+}
+
+.voiceover-card:hover {
+  transform: translateX(5px);
+}
+
+.voiceover-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.75rem;
+}
+
+.voiceover-info {
+  flex: 1;
+}
+
+.voiceover-title {
+  font-family: 'Courier New', monospace;
+  font-size: 1rem;
+  color: #ff6b35;
+  margin: 0 0 0.25rem 0;
+  font-weight: 400;
+  text-transform: lowercase;
+}
+
+.voiceover-category {
+  color: #808080;
+  font-size: 0.8rem;
+  font-family: 'Courier New', monospace;
+  text-transform: lowercase;
+  letter-spacing: 0.5px;
+}
+
+.play-button {
+  width: 16px;
+  height: 16px;
+  border: none;
+  background: transparent;
+  color: #ff6b35;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.play-button:hover {
+  color: #000000;
+  transform: scale(1.2);
+}
+
+.play-button:active {
+  transform: scale(0.9);
+}
+
+.voiceover-description {
+  color: #808080;
+  font-size: 0.9rem;
+  margin: 0 0 0.75rem 0;
+  line-height: 1.4;
+  max-width: 85%;
+}
+
+.voiceover-script {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0.75rem 0;
+  font-style: italic;
+  color: #a0a0a0;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  max-width: 85%;
+}
+
+.voiceover-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.75rem;
+  font-size: 0.75rem;
+  color: #606060;
+}
+
+.duration {
+  display: flex;
+  align-items: center;
+  font-family: 'Courier New', monospace;
+}
+
+.status {
+  font-family: 'Courier New', monospace;
+  color: #ff6b35;
+  text-transform: lowercase;
+  font-size: 0.7rem;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.1);
+  margin-top: 0.5rem;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #ff6b35;
+  transition: width 0.1s ease;
+}
+
+@media (min-width: 768px) {
+  .voiceover-card {
+    padding: 2rem 0;
+  }
+  
+  .voiceover-title {
+    font-size: 1.1rem;
+  }
+  
+  .voiceover-description {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .voiceover-card {
+    padding: 2.5rem 0;
+  }
+  
+  .voiceover-title {
+    font-size: 1.2rem;
+  }
+}
+
+/* Project Link Disabled State */
+.project-link-disabled {
+  color: #808080 !important;
+  cursor: default;
+  opacity: 0.6;
+}
+
+.project-link-disabled:hover {
+  color: #808080 !important;
+  transform: none !important;
+}

@@ -21,13 +21,8 @@ const About = () => {
         viewport={{ once: true }}
       >
         <p className="content-text">
-          building tools that honor both innovation and intuition. each project explores 
-          the intersection of ancient wisdom and modern technology.
-        </p>
-        
-        <p className="content-text">
-          crafted independently with ai partnership, focused on meaningful connection 
-          over meaningless metrics.
+          crafting digital tools and strategies that connect brands with their communities. 
+          focused on meaningful engagement over vanity metrics.
         </p>
         
         <div className="content-meta">
