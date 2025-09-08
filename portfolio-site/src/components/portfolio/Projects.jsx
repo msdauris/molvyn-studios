@@ -12,10 +12,10 @@ const Projects = () => {
       type: 'digital'
     },
     {
-      id: 'origami',
-      title: 'origami fortune teller',
+      id: 'chatterbox',
+      title: 'digital chatterbox',
       description: 'interactive fortune teller that unfolds wisdom with each click',
-      link: '/origami',
+      link: '/chatterbox',
       status: 'live',
       type: 'digital'
     },
